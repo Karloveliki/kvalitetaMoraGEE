@@ -1,6 +1,18 @@
 // Define a region of interest
 var roi = ee.Geometry.Point([16.289002780181892,43.3944748974847]);
+roi= ee.Geometry.Polygon(
+[[ 
 
+    [16.15218475008039,43.41160774308734],
+    [16.21077264340492,43.3399477660631],
+    [16.31622956371641,43.30878308626028],
+    [16.40373385104646,43.31589348821554],
+    [16.3993441820441,43.37366881558135],
+    [16.34990114673207,43.4072772308747],
+    [16.26380239527345,43.42582713023019],
+    [16.15218475008039,43.41160774308734]
+]]    
+)
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
                   .filterDate('2018-04-01', '2018-04-04');
@@ -19,3 +31,5 @@ var visParams = {
 
 Map.centerObject(roi, 10);
 Map.addLayer(rgb, visParams, 'RGB');
+Map.addLayer(roi, {color: 'FF0000'}, 'ROI');
+
