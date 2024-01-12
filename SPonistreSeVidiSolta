@@ -27,7 +27,7 @@ var visParams = {
   min: 0,
   max: 6,
   gamma: 2.5,
-  opacity: 0.05
+  opacity: 0.5
 };
 
 Map.centerObject(roi, 10);
