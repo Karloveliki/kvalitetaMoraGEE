@@ -26,10 +26,11 @@ var rgb = dataset.select(['Oa08_radiance', 'Oa06_radiance', 'Oa04_radiance'])
 var visParams = {
   min: 0,
   max: 6,
-  gamma: 1.5,
+  gamma: 2.5,
+  opacity: 0.05
 };
 
 Map.centerObject(roi, 10);
+Map.addLayer(roi, {color: '110000', opacity: 0.05}, 'ROI');
 Map.addLayer(rgb, visParams, 'RGB');
-Map.addLayer(roi, {color: 'FF0000'}, 'ROI');
 
