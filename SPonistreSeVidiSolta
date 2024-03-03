@@ -23,8 +23,10 @@ var rgb = dataset.select(['Oa08_radiance', 'Oa06_radiance', 'Oa04_radiance'])
               // Convert to radiance units.
               .multiply(ee.Image([0.00876539, 0.0123538, 0.0115198]));
 console.log(typeof(rgb), Object.keys(rgb), rgb.length)
-var width = rgb.width().getInfo();
-var height = rgb.height().getInfo();
+console.log("kljuci", Object.keys(rgb))
+console.log("duljina", rgb.length)
+//var width = rgb.width().getInfo();
+//var height = rgb.height().getInfo();
 
 console.log("koko", width, height)
 var visParams = {
