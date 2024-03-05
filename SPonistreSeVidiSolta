@@ -17,7 +17,7 @@ var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
                   .filterDate('2018-04-01', '2018-04-04');
 
-const bandFactors=[
+var bandFactors=[
     0.0139465,
     0.0133873,
     0.0121481,
@@ -40,8 +40,33 @@ const bandFactors=[
     0.00326378,
     0.00324118
 ]
+
+//var bands = ...
+var bands=[
+    'Oa01_radiance',
+    'Oa02_radiance',
+    'Oa03_radiance',
+    'Oa04_radiance',
+    'Oa05_radiance',
+    'Oa06_radiance',
+    'Oa07_radiance',
+    'Oa08_radiance',
+    'Oa09_radiance',
+    'Oa10_radiance',
+    'Oa11_radiance',
+    'Oa12_radiance',
+    'Oa13_radiance',
+    'Oa14_radiance',
+    'Oa15_radiance',
+    'Oa16_radiance',
+    'Oa17_radiance',
+    'Oa18_radiance',
+    'Oa19_radiance',
+    'Oa20_radiance',
+    'Oa21_radiance'
+]
 // Select bands for visualization and apply band-specific scale factors.
-var rgb = dataset //.select(['Oa08_radiance', 'Oa06_radiance', 'Oa04_radiance'])
+var rgb = dataset.select(bands)
               .median()
               // Convert to radiance units.
               .multiply(ee.Image(bandFactors));
