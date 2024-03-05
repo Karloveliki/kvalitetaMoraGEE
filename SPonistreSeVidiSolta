@@ -42,6 +42,7 @@ Map.addLayer(rgb, visParams, 'RGB');
 
 Export.image.toDrive({
   image: rgb,
+  region: roi,
   description: 'Proba_exporta',
   maxPixels: 1092227573612,
   scale: 30
