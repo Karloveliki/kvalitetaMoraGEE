@@ -1,0 +1,20 @@
+// Load a landsat image and select three bands.
+var landsat = ee.Image('LANDSAT/LC08/C02/T1_TOA/LC08_123032_20140515')
+  .select(['B4', 'B3', 'B2']);
+
+// Create a geometry representing an export region.
+var geometry = ee.Geometry.Rectangle([116.2621, 39.8412, 116.4849, 40.01236]);
+
+// Retrieve the projection information from a band of the original image.
+// Call getInfo() on the projection to request a client-side object containing
+// the crs and transform information needed for the client-side Export function.
+var projection = landsat.select('B2').projection().getInfo();
+
+// Export the image, specifying the CRS, transform, and region.
+Export.image.toDrive({
+  image: landsat,
+  description: 'imageToDriveExample_transform',
+  crs: projection.crs,
+  crsTransform: projection.transform,
+  region: geometry
+});
