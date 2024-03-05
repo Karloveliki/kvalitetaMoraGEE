@@ -40,3 +40,8 @@ Map.centerObject(roi, 10);
 Map.addLayer(roi, {color: '110000', opacity: 0.05}, 'ROI');
 Map.addLayer(rgb, visParams, 'RGB');
 
+Export.image.toDrive({
+  image: rgb,
+  description: 'Proba_exporta',
+  scale: 30
+});
