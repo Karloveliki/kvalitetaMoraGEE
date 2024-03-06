@@ -88,6 +88,8 @@ Map.centerObject(roi, 10);
 Map.addLayer(roi, {color: '110000', opacity: 0.05}, 'ROI');
 Map.addLayer(rgb, visParams, 'RGB');
 
+image.unmask(-9999).clip(roi)
+
 Export.image.toDrive({
   image: rgb,
   region: roi,
