@@ -93,7 +93,7 @@ image.unmask(-9999).clip(roi)
 Export.image.toDrive({
   image: rgb,
   region: roi,
-  description: 'Proba_exporta',
+  description: 'export',
   maxPixels: 1092227573612,
   scale: 30
 });
