@@ -95,5 +95,5 @@ Export.image.toDrive({
   region: roi,
   description: 'export',
   maxPixels: 1092227573612,
-  scale: 30
+  scale: 29
 });
