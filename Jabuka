@@ -1,0 +1,99 @@
+/**** Start of imports. If edited, may not auto-convert in the playground. ****/
+var roi = 
+    /* color: #0b4a8b */
+    /* displayProperties: [
+      {
+        "type": "rectangle"
+      }
+    ] */
+    ee.Geometry.Polygon(
+        [[[15.650705908329718, 43.07321000616935],
+          [15.650705908329718, 42.958742627265515],
+          [15.869059179814093, 42.958742627265515],
+          [15.869059179814093, 43.07321000616935]]], null, false);
+/***** End of imports. If edited, may not auto-convert in the playground. *****/
+// Define a region of interest
+var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
+                  .filterBounds(roi)
+                  .filterDate('2018-04-01', '2018-04-04');
+
+var bandFactors=[
+    0.0139465,
+    0.0133873,
+    0.0121481,
+    0.0115198,
+    0.0100953,
+    0.0123538,
+    0.00879161,
+    0.00876539,
+    0.0095103,
+    0.00773378,
+    0.00675523,
+    0.0071996,
+    0.00749684,
+    0.0086512,
+    0.00526779,
+    0.00530267,
+    0.00493004,
+    0.00549962,
+    0.00502847,
+    0.00326378,
+    0.00324118
+]
+
+//var bands = ...
+var bands=[
+    'Oa01_radiance',
+    'Oa02_radiance',
+    'Oa03_radiance',
+    'Oa04_radiance',
+    'Oa05_radiance',
+    'Oa06_radiance',
+    'Oa07_radiance',
+    'Oa08_radiance',
+    'Oa09_radiance',
+    'Oa10_radiance',
+    'Oa11_radiance',
+    'Oa12_radiance',
+    'Oa13_radiance',
+    'Oa14_radiance',
+    'Oa15_radiance',
+    'Oa16_radiance',
+    'Oa17_radiance',
+    'Oa18_radiance',
+    'Oa19_radiance',
+    'Oa20_radiance',
+    'Oa21_radiance'
+]
+// Select bands for visualization and apply band-specific scale factors.
+var rgb = dataset.select(bands)
+              .median()
+              // Convert to radiance units.
+              .multiply(ee.Image(bandFactors));
+console.log(typeof(rgb))
+console.log(Object.keys(rgb))
+console.log(rgb.length)
+//var width = rgb.width().getInfo();
+//var height = rgb.height().getInfo();
+
+//console.log("koko", width, height)
+var visParams = {
+  min: 0,
+  max: 6,
+  gamma: 2.5,
+  opacity: 0.5
+};
+
+Map.centerObject(roi, 10);
+Map.addLayer(roi, {color: '110000', opacity: 0.05}, 'ROI');
+Map.addLayer(rgb, visParams, 'RGB');
+
+rgb.unmask(-9999).clip(roi)
+
+Export.image.toDrive({
+  image: rgb,
+  region: roi,
+  description: 'export',
+  maxPixels: 1092227573612,
+  scale: 29
+});
