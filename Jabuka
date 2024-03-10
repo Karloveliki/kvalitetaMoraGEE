@@ -70,7 +70,7 @@ var rgb = dataset.select(bands)
               .median()
               // Convert to radiance units.
               //.multiply(ee.Image(bandFactors));
-              .divide(ee.Image(bandFactors));
+           //   .divide(ee.Image(bandFactors));
 console.log(typeof(rgb))
 console.log(Object.keys(rgb))
 console.log(rgb.length)
