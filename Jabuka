@@ -88,8 +88,8 @@ var visParams = {
 Map.centerObject(roi, 10);
 Map.addLayer(roi, {color: '110000', opacity: 0.05}, 'ROI');
 Map.addLayer(rgb, visParams, 'RGB');
-
-rgb.unmask(-9999).clip(roi)
+var noData=-9999
+rgb.unmask(noData).clip(roi)
 
 Export.image.toDrive({
   image: rgb,
