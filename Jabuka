@@ -13,6 +13,8 @@ var roi =
           [15.869059179814093, 43.07321000616935]]], null, false);
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
 // Define a region of interest
+
+
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
                   .filterDate('2018-04-01', '2018-04-04');
@@ -99,6 +101,6 @@ Export.image.toDrive({
   scale: 29,
   fileFormat: 'GeoTIFF',
   formatOptions: {
-    noData: noDataVal,
+    noData: noData,
   }
 });
