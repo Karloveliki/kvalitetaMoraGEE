@@ -13,7 +13,19 @@ var roi =
           [15.869059179814093, 43.07321000616935]]], null, false);
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
 // Define a region of interest
+roi= ee.Geometry.Polygon(
+[[ 
 
+    [16.15218475008039,43.41160774308734],
+    [16.21077264340492,43.3399477660631],
+    [16.31622956371641,43.30878308626028],
+    [16.40373385104646,43.31589348821554],
+    [16.3993441820441,43.37366881558135],
+    [16.34990114673207,43.4072772308747],
+    [16.26380239527345,43.42582713023019],
+    [16.15218475008039,43.41160774308734]
+]]    
+)
 
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
@@ -91,10 +103,10 @@ Map.centerObject(roi, 10);
 Map.addLayer(roi, {color: '110000', opacity: 0.05}, 'ROI');
 Map.addLayer(rgb, visParams, 'RGB');
 var noData=-9999
-rgb.unmask(noData).clip(roi)
+rgb2 = rgb.unmask(noData).clip(roi)
 
 Export.image.toDrive({
-  image: rgb,
+  image: rgb2,
   region: roi,
   description: 'export',
   maxPixels: 1092227573612,
