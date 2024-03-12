@@ -96,5 +96,9 @@ Export.image.toDrive({
   region: roi,
   description: 'export',
   maxPixels: 1092227573612,
-  scale: 29
+  scale: 29,
+  fileFormat: 'GeoTIFF',
+  formatOptions: {
+    noData: noDataVal,
+  }
 });
