@@ -1,5 +1,5 @@
 // Define a region of interest
-roi= ee.Geometry.Polygon(
+var roi= ee.Geometry.Polygon(
 [[ 
 
     [16.15218475008039,43.41160774308734],
@@ -73,10 +73,12 @@ var rgb = dataset.select(bands)
            //   .divide(ee.Image(bandFactors));
 console.log(Object.keys(rgb))
 console.log(rgb.length)
-var width = rgb.width().getInfo();
-var height = rgb.height().getInfo();
+//var width = rgb.width().getInfo();
+//var height = rgb.height().getInfo();
 
-var pixArray=image.sample(roi, 30);
+var pixArray=rgb.sample(roi, 30);
+var numDimensions = array.length().getInfo();
+print('Number of dimensions:', numDimensions);
 //console.log("koko", width, height)
 var visParams = {
   min: 0,
@@ -85,20 +87,5 @@ var visParams = {
   opacity: 0.5
 };
 
-Map.centerObject(roi, 10);
-Map.addLayer(roi, {color: '110000', opacity: 0.05}, 'ROI');
-Map.addLayer(rgb, visParams, 'RGB');
-var noData=-9999
-rgb2 = rgb.unmask(noData).clip(roi)
 
-Export.image.toDrive({
-  image: rgb2,
-  region: roi,
-  description: 'export',
-  maxPixels: 1092227573612,
-  scale: 29,
-  fileFormat: 'GeoTIFF',
-  formatOptions: {
-    noData: noData,
-  }
-});
+
