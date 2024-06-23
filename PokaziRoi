@@ -1,4 +1,9 @@
-
+var polygonKornati=  ee.Geometry.Polygon(
+                [[[14.491504264753722, 43.72321276540049],
+                  [14.687884879988097, 43.706338572761716],
+                  [14.690631462019347, 43.78471367243464],
+                  [14.496997428816222, 43.79660977327546]]])
+                  
 var polygon =  ee.Geometry.Polygon(
     [[ 
     
@@ -14,4 +19,4 @@ var polygon =  ee.Geometry.Polygon(
   )
 //Map.setCenter(longitude_center, latitude_center, zoom_level); // Set map center (optional)
 
-Map.addLayer(geometry, {color: 'red'}, 'ROI'); // Add ROI with red color and label
+Map.addLayer(polygonKornati, {color: 'red'}, 'ROI'); // Add ROI with red color and label
