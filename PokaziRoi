@@ -4,7 +4,7 @@ var polygonKornati=  ee.Geometry.Polygon(
                   [14.690631462019347, 43.78471367243464],
                   [14.496997428816222, 43.79660977327546]]])
                   
-var polygon =  ee.Geometry.Polygon(
+var polygonSolta =  ee.Geometry.Polygon(
     [[ 
     
         [16.15218475008039,43.41160774308734],
