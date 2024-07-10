@@ -1,3 +1,11 @@
+/**** Start of imports. If edited, may not auto-convert in the playground. ****/
+var geometry = /* color: #d63000 */ee.Geometry.LinearRing(
+        [[16.20844078848326, 43.52474874750522],
+         [16.20844078848326, 43.477432475917375],
+         [16.341306694244977, 43.47394454697374],
+         [16.334782959150967, 43.55784758209293],
+         [16.20844078848326, 43.52474874750522]]);
+/***** End of imports. If edited, may not auto-convert in the playground. *****/
 var polygonKornati=  ee.Geometry.Polygon(
                 [[[14.491504264753722, 43.72321276540049],
                   [14.687884879988097, 43.706338572761716],
