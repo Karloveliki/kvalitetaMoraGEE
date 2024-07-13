@@ -25,6 +25,16 @@ var polygonSolta =  ee.Geometry.Polygon(
         [16.15218475008039,43.41160774308734]
     ]]    
   )
+  var polygonCiovo=ee.Geometry.Polygon(
+    [[ 
+        [16.20844078848326,43.52474874750522],
+        [16.20844078848326,43.477432475917375],
+        [16.341306694244977,43.47394454697374],
+        [16.334782959150967,43.55784758209293],
+        [16.20844078848326,43.52474874750522]
+        
+    ]]    
+)
 //Map.setCenter(longitude_center, latitude_center, zoom_level); // Set map center (optional)
 
-Map.addLayer(polygonKornati, {color: 'red'}, 'ROI'); // Add ROI with red color and label
+Map.addLayer(polygonCiovo, {color: 'red'}, 'ROI'); // Add ROI with red color and label
