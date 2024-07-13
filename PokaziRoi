@@ -43,4 +43,4 @@ var polygonSolta =  ee.Geometry.Polygon(
 )
 //Map.setCenter(longitude_center, latitude_center, zoom_level); // Set map center (optional)
 
-Map.addLayer(polygonCiovo, {color: 'blue'}, 'ROI'); // Add ROI with red color and label
+//Map.addLayer(polygonCiovo, {color: 'blue'}, 'ROI'); // Add ROI with red color and label
