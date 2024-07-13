@@ -1,10 +1,16 @@
 /**** Start of imports. If edited, may not auto-convert in the playground. ****/
-var geometry = /* color: #d63000 */ee.Geometry.LinearRing(
-        [[16.20844078848326, 43.52474874750522],
-         [16.20844078848326, 43.477432475917375],
-         [16.341306694244977, 43.47394454697374],
-         [16.334782959150967, 43.55784758209293],
-         [16.20844078848326, 43.52474874750522]]);
+var geometry = 
+    /* color: #d63000 */
+    /* displayProperties: [
+      {
+        "type": "rectangle"
+      }
+    ] */
+    ee.Geometry.Polygon(
+        [[[16.246564530619207, 43.56864765332039],
+          [16.246564530619207, 43.47703654992279],
+          [16.50062336850983, 43.47703654992279],
+          [16.50062336850983, 43.56864765332039]]], null, false);
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
 var polygonKornati=  ee.Geometry.Polygon(
                 [[[14.491504264753722, 43.72321276540049],
@@ -27,14 +33,14 @@ var polygonSolta =  ee.Geometry.Polygon(
   )
   var polygonCiovo=ee.Geometry.Polygon(
     [[ 
-        [16.20844078848326,43.52474874750522],
-        [16.20844078848326,43.477432475917375],
-        [16.341306694244977,43.47394454697374],
-        [16.334782959150967,43.55784758209293],
-        [16.20844078848326,43.52474874750522]
-        
+       [16.246564530619207,43.47703654992279],
+        [16.50062336850983,43.47703654992279],
+        [16.50062336850983,43.56864765332039],
+        [16.246564530619207,43.56864765332039],
+        [16.246564530619207,43.47703654992279]
+            
     ]]    
 )
 //Map.setCenter(longitude_center, latitude_center, zoom_level); // Set map center (optional)
 
-Map.addLayer(polygonCiovo, {color: 'red'}, 'ROI'); // Add ROI with red color and label
+Map.addLayer(polygonCiovo, {color: 'blue'}, 'ROI'); // Add ROI with red color and label
