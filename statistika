@@ -80,21 +80,3 @@ var stats = rgb.reduceRegion({
 
 print("stats", stats)
 
-console.log(typeof(rgb))
-console.log(Object.keys(rgb))
-console.log(rgb.length)
-
-var visParams = {
-  min: 0,
-  max: 6,
-  gamma: 2.5,
-  opacity: 0.5
-};
-
-
-Map.centerObject(roi, 10);
-Map.addLayer(roi, {color: '110000', opacity: 0.05}, 'ROI');
-Map.addLayer(rgb, visParams, 'RGB');
-
-//rgb.unmask(-9999).clip(roi)
-
