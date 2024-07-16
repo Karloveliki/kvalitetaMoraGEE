@@ -88,4 +88,4 @@ var statsMean = rgb.reduceRegion({
   // scale: 30 // Example scale in meters
 });
 
-print("za sve bandove", statsMean)
+print("mean za sve bandove", statsMean)
