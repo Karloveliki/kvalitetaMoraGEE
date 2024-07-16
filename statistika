@@ -69,7 +69,7 @@ var rgb = dataset.select(bands)
               // Convert to radiance units.
               //.multiply(ee.Image(bandFactors));
 
-var stats = image.reduceRegion({
+var stats = rgb.reduceRegion({
   // Use ee.Reducer.minMax() to get min and max for each band
   reducers: ee.Reducer.minMax().combine(ee.Reducer.mean()),
   // Specify the region geometry
