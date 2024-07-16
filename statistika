@@ -83,10 +83,7 @@ print("stats", stats)
 console.log(typeof(rgb))
 console.log(Object.keys(rgb))
 console.log(rgb.length)
-var width = rgb.width().getInfo();
-var height = rgb.height().getInfo();
 
-console.log("koko", width, height)
 var visParams = {
   min: 0,
   max: 6,
