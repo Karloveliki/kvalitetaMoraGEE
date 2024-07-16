@@ -78,5 +78,14 @@ var stats = rgb.reduceRegion({
   // scale: 30 // Example scale in meters
 });
 
-print("stats", stats)
+print("min i max za sve bandove, vidi B01 i B10", stats)
 
+var statsMean = rgb.reduceRegion({
+  reducer: ee.Reducer.mean(),
+  // Specify the region geometry
+  geometry: roi,
+  // Optional: Set the scale (pixel resolution) for the analysis
+  // scale: 30 // Example scale in meters
+});
+
+print("za sve bandove", statsMean)
