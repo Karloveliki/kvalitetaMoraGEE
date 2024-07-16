@@ -71,7 +71,7 @@ var rgb = dataset.select(bands)
 
 var stats = rgb.reduceRegion({
   // Use ee.Reducer.minMax() to get min and max for each band
-  reducer: ee.Reducer.minMax().combine(ee.Reducer.mean()),
+  reducer: ee.Reducer.minMax(),
   // Specify the region geometry
   geometry: roi,
   // Optional: Set the scale (pixel resolution) for the analysis
