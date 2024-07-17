@@ -69,25 +69,13 @@ var rgb = dataset.select(bands)
               // Convert to radiance units.
               //.multiply(ee.Image(bandFactors));
 
+function reducer(b01,b02,b03,b04,b05,b06,b07,b08,b09,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21) {
+  return b01
+}
+
 var reduced = rgb.reduce(reducer)
 
-var stats = rgb.reduceRegion({
-  // Use ee.Reducer.minMax() to get min and max for each band
-  reducer: ee.Reducer.minMax(),
-  // Specify the region geometry
-  geometry: roi,
-  // Optional: Set the scale (pixel resolution) for the analysis
-  // scale: 30 // Example scale in meters
-});
+print(typeof(reduced))
+print(Object.keys(reduced))
+print(reduced.length)
 
-print("min i max za sve bandove, vidi B01 i B10", stats)
-
-var statsMean = rgb.reduceRegion({
-  reducer: ee.Reducer.mean(),
-  // Specify the region geometry
-  geometry: roi,
-  // Optional: Set the scale (pixel resolution) for the analysis
-  // scale: 30 // Example scale in meters
-});
-
-print("mean za sve bandove", statsMean)
