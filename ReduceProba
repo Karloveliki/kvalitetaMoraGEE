@@ -78,7 +78,7 @@ var reduced = rgb.reduce(reducer)
 // Get the number of bands
 var bandNames = reduced.bandNames();
 print('Number of bands:', bandNames.length);
-print('bands:' bandNames)
+print('bands:', bandNames)
 // Get image dimensions (assuming all bands have the same size)
 var firstBand = reduced.select(bandNames.get(0));
 var dimensions = firstBand.getInfo().bands[0];
