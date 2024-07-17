@@ -69,11 +69,14 @@ var rgb = dataset.select(bands)
               // Convert to radiance units.
               //.multiply(ee.Image(bandFactors));
 
-function reducer(b01,b02,b03,b04,b05,b06,b07,b08,b09,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21) {
-  return b01
+function reducer(prev, current) {
+  var newList =  [...prev].append(current)
+  if (newList.length==21) {
+    return newList[0]
+  }
 }
 
-var reduced = rgb.reduce(reducer)
+var reduced = rgb.reduce(reducer, [])
 
 // Get the number of bands
 var bandNames = reduced.bandNames();
