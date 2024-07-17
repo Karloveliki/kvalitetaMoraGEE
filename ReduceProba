@@ -70,7 +70,7 @@ var rgb = dataset.select(bands)
               //.multiply(ee.Image(bandFactors));
 
 function reducer(prev, current) {
-  var newList =  [...prev].append(current)
+  var newList =  prev.slice().append(current)
   if (newList.length==21) {
     return newList[0]
   }
