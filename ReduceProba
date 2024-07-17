@@ -75,7 +75,11 @@ function reducer(b01,b02,b03,b04,b05,b06,b07,b08,b09,b10,b11,b12,b13,b14,b15,b16
 
 var reduced = rgb.reduce(reducer)
 
-print(typeof(reduced))
-print(Object.keys(reduced))
-print(reduced.length)
-
+// Get the number of bands
+var bandNames = reduced.bandNames();
+print('Number of bands:', bandNames.length);
+print('bands:' bandNames)
+// Get image dimensions (assuming all bands have the same size)
+var firstBand = reduced.select(bandNames.get(0));
+var dimensions = firstBand.getInfo().bands[0];
+print('Image dimensions:', dimensions);
