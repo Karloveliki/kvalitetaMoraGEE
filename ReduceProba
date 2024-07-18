@@ -69,7 +69,7 @@ var rgb = dataset.select(bands)
               // Convert to radiance units.
               //.multiply(ee.Image(bandFactors));
 
-var fromList = [ [0,50], [50,88], [88,10000]]
+var fromList = [ ee.Array([0,50]), ee.Array([50,88]), ee.Array([88,10000])]
 var toList = [1,2,3]
 
 var b01Reduced = rgb.remap({
