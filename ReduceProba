@@ -78,6 +78,17 @@ var b01Reduced = rgb.remap({
   bandName: 'Oa01_radiance'
 })
 
+var stats = b01Reduced.reduceRegion({
+  // Use ee.Reducer.minMax() to get min and max for each band
+  reducer: ee.Reducer.minMax(),
+  // Specify the region geometry
+  geometry: roi,
+  // Optional: Set the scale (pixel resolution) for the analysis
+  // scale: 30 // Example scale in meters
+});
+
+print("min i max za sve bandove, vidi B01 i B10", stats)
+
 print("done")
 /*
 // Get the number of bands
