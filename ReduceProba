@@ -78,6 +78,7 @@ var b01Reduced = rgb.remap({
   bandName: 'Oa01_radiance'
 })
 
+print("done")
 /*
 // Get the number of bands
 var bandNames = reduced.bandNames();
