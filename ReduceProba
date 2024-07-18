@@ -75,6 +75,7 @@ var toList = [1,2,3]
 var b01Reduced = rgb.remap({
   from: fromList,
   to: toList,
+  defaultValue: 777,
   bandName: 'Oa01_radiance'
 })
 
