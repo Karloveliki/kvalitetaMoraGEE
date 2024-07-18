@@ -69,15 +69,16 @@ var rgb = dataset.select(bands)
               // Convert to radiance units.
               //.multiply(ee.Image(bandFactors));
 
-function reducer(prev, current) {
-  var newList =  prev.slice().append(current)
-  if (newList.length==21) {
-    return newList[0]
-  }
-}
+var fromList = [ [0,50], [50,88], [88,10000]]
+var toList = [1,2,3]
 
-var reduced = rgb.reduce(reducer, [])
+var b01Reduced = rgb.remap({
+  from: fromList,
+  to: toList,
+  bandName: 'Oa01_radiance'
+})
 
+/*
 // Get the number of bands
 var bandNames = reduced.bandNames();
 print('Number of bands:', bandNames.length);
@@ -86,3 +87,4 @@ print('bands:', bandNames)
 var firstBand = reduced.select(bandNames.get(0));
 var dimensions = firstBand.getInfo().bands[0];
 print('Image dimensions:', dimensions);
+*/
