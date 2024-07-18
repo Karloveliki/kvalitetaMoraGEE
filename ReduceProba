@@ -63,9 +63,7 @@ var bands=[
     'Oa21_radiance'
 ]
 // Select bands for visualization and apply band-specific scale factors.
-var rgb = dataset.selec
-
-t(bands)
+var rgb = dataset.select(bands)
               //.median()
               .first()
               // Convert to radiance units.
