@@ -36,7 +36,7 @@ function createBandNames(n) {
 var bandValues = []
 for (var i=1;i<=21;i++) {
   var bandName = createBandNames(i)
-  bandValues.push(pixel1[bandName])
+  bandValues.push(tocka1[bandName])
 }
 
 print (bandValues)
