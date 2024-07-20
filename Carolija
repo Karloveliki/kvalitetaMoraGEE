@@ -25,3 +25,29 @@ var tocka1 = {
         'B21': 44.8
 }
 
+function createBandNames(n) {
+  return 'B' + String(n).padStart(2, '0');
+}
+
+// Define the predefined values for each band.
+var bandValues = []
+for (var i=1;i<=21;i++) {
+  var bandName = createBandNames(i)
+  bandValues.push(pixel1[bandName])
+}
+
+print (bandValues)
+// Create a constant image with a single value (0) and a small size (1x1).
+var image = ee.Image.constant(0).set({rows: 1, columns: 1});
+
+// Function to create band names with leading zeros (B01 format).
+
+// Create a list of band names using the function.
+var bandNames = bandValues.map(createBandNames);
+
+// Rename the bands with the new names.
+var image = image.rename(bandNames);
+
+// Print the image information.
+print(image);
+
