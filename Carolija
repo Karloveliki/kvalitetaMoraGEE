@@ -43,7 +43,7 @@ var constNames = []
 for (var i=1;i<=21;i++) {
   var bandName = createBandNames(i)
   bandNames.push(bandName)
-  if (i==0) {
+  if (i===0) {
     constNames.push("constant")
   } else {
     constNames.push("constant_"+String(i-1))
