@@ -64,5 +64,8 @@ img = img.select(
 );
 print(img);
 
+var tg01 = ee.Image(vjerojatnosti["B01"]["good"]["thresholds"]); //Define the thresholds
+var classified = img.select("B01").gt(tg01).reduce('sum').toInt(); //Create the classified Image
+print(classified)
 
 
