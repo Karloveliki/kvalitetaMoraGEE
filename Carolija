@@ -38,8 +38,16 @@ function createBandNames(n) {
 
 // Define the predefined values for each band.
 var bandValues = []
+var bandNames = []
+var constNames = []
 for (var i=1;i<=21;i++) {
   var bandName = createBandNames(i)
+  bandNames.push(bandName)
+  if (i==0) {
+    constNames.push("constant")
+  } else {
+    constNames.push("constant_"+String(i-1))
+  }
   bandValues.push(tocka1[bandName])
 }
 
@@ -47,5 +55,12 @@ print (bandValues)
 var img = ee.Image(bandValues);
 print(img)
 
+img = img.select(
+    ['constant', 'constant_1', 'constant_2','constant_3','constant_4','constant_5','constant_6',
+    'constant_7','constant_8','constant_9','constant_10'], // old names
+    ['band1', 'band2', 'band3']               // new names
+);
+print(img);
+['constant', 'constant]
 
 
