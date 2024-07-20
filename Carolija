@@ -45,7 +45,7 @@ for (var i=1;i<=21;i++) {
 
 print (bandValues)
 var img = ee.Image(bandValues);
-print img
+print(img)
 
 
 
