@@ -25,6 +25,10 @@ var tocka1 = {
         'B21': 44.8
 }
 
+
+var multiband = ee.Image([1, 2, 3]);
+print(multiband);
+
 function createBandNames(n) {
   if (n>9) {
     return 'B' + String(n)
