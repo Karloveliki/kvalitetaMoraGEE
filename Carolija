@@ -26,7 +26,10 @@ var tocka1 = {
 }
 
 function createBandNames(n) {
-  return 'B' + String(n).padStart(2, '0');
+  if (n>9) {
+    return 'B' + String(n)
+  }
+  return 'B0' + String(n)
 }
 
 // Define the predefined values for each band.
