@@ -95,6 +95,12 @@ var b01Reduced = classified.remap({
   to: toList,
   defaultValue: 707,
 })
+var imgDescription = ee.Algorithms.Describe( classified );
+var height = ee.List( ee.Dictionary( ee.List(  ee.Dictionary( imgDescription ).get("bands") ).get(0) ).get("dimensions") ).get(0);
+var width = ee.List( ee.Dictionary( ee.List(  ee.Dictionary( imgDescription ).get("bands") ).get(0) ).get("dimensions") ).get(1);
+  
+  print("width", width )
+  print("height", height )
 print("classified",classified)
 print("b01Reduced:",b01Reduced)
 var stats = b01Reduced.reduceRegion({
