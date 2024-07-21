@@ -97,7 +97,7 @@ var b01Reduced = classified.remap({
 })
 // Assuming your image is stored in a variable called 'image'
 var imageInfo = classified.getInfo();
-
+print("imageInfo:",imageInfo)
 // Access the first band information (assuming a single band image)
 var firstBand = imageInfo.bands[0];
 
