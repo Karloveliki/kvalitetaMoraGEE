@@ -73,6 +73,7 @@ var rgb = dataset.select('Oa02_radiance')
 var thresholds = ee.Image([0, 50, 88, 10000]); //Define the thresholds
 var classified = rgb.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
 
+
 var statsClassified = classified.reduceRegion({
   // Use ee.Reducer.minMax() to get min and max for each band
   reducer: ee.Reducer.minMax(),
@@ -81,6 +82,7 @@ var statsClassified = classified.reduceRegion({
   // Optional: Set the scale (pixel resolution) for the analysis
   // scale: 30 // Example scale in meters
 });
+
 
 print("min i max za classified", statsClassified)
 
@@ -93,7 +95,8 @@ var b01Reduced = classified.remap({
   to: toList,
   defaultValue: 707,
 })
-
+print("classified",classified)
+print("b01Reduced:",b01Reduced)
 var stats = b01Reduced.reduceRegion({
   // Use ee.Reducer.minMax() to get min and max for each band
   reducer: ee.Reducer.minMax(),
