@@ -99,6 +99,7 @@ var b01Reduced = classified.remap({
 var imageInfo = classified.getInfo();
 print("imageInfo:",imageInfo)
 // Access the first band information (assuming a single band image)
+print(imageInfo.bands)
 var firstBand = imageInfo.bands[0];
 
 // Extract width and height from the band information
