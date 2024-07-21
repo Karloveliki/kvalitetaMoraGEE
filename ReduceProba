@@ -95,12 +95,19 @@ var b01Reduced = classified.remap({
   to: toList,
   defaultValue: 707,
 })
-var imgDescription = ee.Algorithms.Describe( classified );
-var height = ee.List( ee.Dictionary( ee.List(  ee.Dictionary( imgDescription ).get("bands") ).get(0) ).get("dimensions") ).get(0);
-var width = ee.List( ee.Dictionary( ee.List(  ee.Dictionary( imgDescription ).get("bands") ).get(0) ).get("dimensions") ).get(1);
-  
-  print("width", width )
-  print("height", height )
+// Assuming your image is stored in a variable called 'image'
+var imageInfo = classified.getInfo();
+
+// Access the first band information (assuming a single band image)
+var firstBand = imageInfo.bands[0];
+
+// Extract width and height from the band information
+var width = firstBand.dimensions[0];
+var height = firstBand.dimensions[1];
+
+print("Image Width:", width);
+print("Image Height:", height);
+
 print("classified",classified)
 print("b01Reduced:",b01Reduced)
 var stats = b01Reduced.reduceRegion({
