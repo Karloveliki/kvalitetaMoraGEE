@@ -88,6 +88,7 @@ var bandFactors=[
 ]
 
 var umnozakGood = null
+var umnozakBad = null
 bandNames.forEach(function(bandName) {
   print("processing:",bandName)
   var band = dataset.select(bandName2GEE[bandName])
@@ -103,85 +104,26 @@ bandNames.forEach(function(bandName) {
     to: toList,
     defaultValue: 0,
   })
+
+  bandBad = vjerojatnosti[bandName]["bad"]
+  thresholds = bandBad["thresholds"]
+  classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
+  fromList = bandBad["from"] 
+  toList = bandBad["to"]
+  var bandBadVjerojatnosti = classified.remap({
+    from: fromList,
+    to: toList,
+    defaultValue: 0,
+  })
+
   if (umnozakGood == null) {
     umnozakGood = bandGoodVjerojatnosti
+    umnozakBad = bandBadVjerojatnosti
   } else {
-    umnozakGood.multiply(bandGoodVjerojatnosti)
+    umnozakBad.multiply(bandBadVjerojatnosti)
   }
 
 })
 
 print("--------------")
-// Select bands for visualization and apply band-specific scale factors.
-var rgb = dataset.select('Oa02_radiance')
-              //.median()
-              .first()
-              // Convert to radiance units.
-              //.multiply(ee.Image(bandFactors));
 
-
-print("rgb:",rgb)
-var thresholds = ee.Image([0, 50, 88, 10000]); //Define the thresholds
-print("rgb.gt:",rgb.gt(thresholds))
-var classified = rgb.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
-
-
-var statsClassified = classified.reduceRegion({
-  // Use ee.Reducer.minMax() to get min and max for each band
-  reducer: ee.Reducer.minMax(),
-  // Specify the region geometry
-  geometry: roi,
-  // Optional: Set the scale (pixel resolution) for the analysis
-  // scale: 30 // Example scale in meters
-});
-
-
-print("min i max za classified", statsClassified)
-
-
-var fromList = [ 0, 1,2,3]
-var toList = [-1, 11,22,33]
-
-var b01Reduced = classified.remap({
-  from: fromList,
-  to: toList,
-  defaultValue: 707,
-})
-// Assuming your image is stored in a variable called 'image'
-var imageInfo = classified.getInfo();
-print("imageInfo:",imageInfo)
-// Access the first band information (assuming a single band image)
-print(imageInfo.bands)
-var firstBand = imageInfo.bands[0];
-
-// Extract width and height from the band information
-var width = firstBand.dimensions[0];
-var height = firstBand.dimensions[1];
-
-print("Image Width:", width);
-print("Image Height:", height);
-
-print("classified",classified)
-print("b01Reduced:",b01Reduced)
-var stats = b01Reduced.reduceRegion({
-  // Use ee.Reducer.minMax() to get min and max for each band
-  reducer: ee.Reducer.minMax(),
-  // Specify the region geometry
-  geometry: roi,
-  // Optional: Set the scale (pixel resolution) for the analysis
-  // scale: 30 // Example scale in meters
-});
-
-print("min i max za sve bandove, vidi B01 i B10", stats)
-
-print("done")
-/*
-// Get the number of bands
-var bandNames = reduced.bandNames();
-print('Number of bands:', bandNames.length);
-print('bands:', bandNames)
-// Get image dimensions (assuming all bands have the same size)
-var firstBand = reduced.select(bandNames.get(0));
-var dimensions = firstBand.getInfo().bands[0];
-print('Image dimensions:', dimensions);
-*/
