@@ -42,7 +42,7 @@ for (var i=1;i<=21;i++) {
   bandName2GEE["bandName"] = bands[i-1]
 }
 
-print("konverzija", bandName2GEE)
+print(bandName2GEE)
 ////////////////////////////////////////////////////////////////////////////
 //##########################################################################
 ////////////////////////////////////////////////////////////////////////////
@@ -61,7 +61,7 @@ roi= ee.Geometry.Polygon(
   bandName2GEE["bandName07 = bands[i-1,43.56864765332039],
   [16.246564530619207,43.47703654992279]
 ]]    
-print("konverzija", bandName2GEE)
+print(bandNa)
 )
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
