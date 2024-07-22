@@ -42,6 +42,19 @@ for (var i=1;i<=21;i++) {
   bandName2GEE[bandName] = bands[i-1]
 }
 
+function createConstant1(image) {
+  // Get the projection and dimensions of the input image
+  var projection = image.projection();
+  var dimensions = image.geometry().bounds().dimensions();
+
+  // Create a constant image with the same projection and dimensions, filled with 1s
+  var constantImage = ee.Image.constant(1).toFloat()
+                          .setDefaultProjection(projection)
+                          .clip(dimensions);
+
+  return constantImage;
+}
+
 ////////////////////////////////////////////////////////////////////////////
 //##########################################################################
 ////////////////////////////////////////////////////////////////////////////
@@ -87,6 +100,7 @@ var bandFactors=[
     0.00324118
 ]
 
+var umnozakGood = null
 bandNames.forEach(function(bandName) {
   print("processing:",bandName)
   var band = dataset.select(bandName2GEE[bandName])
@@ -102,6 +116,10 @@ bandNames.forEach(function(bandName) {
     to: toList,
     defaultValue: 0,
   })
+  if (umnozakGood == null) {
+    umnozakGood = bandGoodVjerojatnosti
+    
+  }
 
   
 })
