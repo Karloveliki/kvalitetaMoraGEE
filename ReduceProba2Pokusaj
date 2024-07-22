@@ -129,5 +129,6 @@ print("--------------")
 
 var kvaliteta =  umnozakGood.gte(umnozakBad);
 
+Map.centerObject(roi, 10);
 Map.addLayer(kvaliteta, {min: 0, max: 1, palette: ['transparent', 'blue']}, 'Comparison Mask', true, 0.5);
 
