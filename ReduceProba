@@ -69,7 +69,7 @@ var rgb = dataset.select('Oa02_radiance')
               // Convert to radiance units.
               //.multiply(ee.Image(bandFactors));
 
-
+print("rgb:",rgb)
 var thresholds = ee.Image([0, 50, 88, 10000]); //Define the thresholds
 var classified = rgb.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
 
