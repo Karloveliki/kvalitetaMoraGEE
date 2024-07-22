@@ -87,7 +87,7 @@ var bandFactors=[
     0.00324118
 ]
 
-bandNames.forEach((bandName) => {
+bandNames.forEach((function(bandName) {
   print(bandName)
 })
 // Select bands for visualization and apply band-specific scale factors.
