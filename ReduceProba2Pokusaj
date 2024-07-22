@@ -127,3 +127,7 @@ bandNames.forEach(function(bandName) {
 
 print("--------------")
 
+var kvaliteta =  umnozakGood.gte(umnozakBad);
+
+Map.addLayer(kvaliteta, {min: 0, max: 1, palette: ['transparent', 'blue']}, 'Comparison Mask', true, 0.5);
+
