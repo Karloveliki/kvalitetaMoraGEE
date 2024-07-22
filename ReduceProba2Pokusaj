@@ -42,7 +42,6 @@ for (var i=1;i<=21;i++) {
   bandName2GEE[bandName] = bands[i-1]
 }
 
-print("XXX",bandName2GEE)
 ////////////////////////////////////////////////////////////////////////////
 //##########################################################################
 ////////////////////////////////////////////////////////////////////////////
@@ -88,6 +87,9 @@ var bandFactors=[
     0.00324118
 ]
 
+bandNames.forEach((bandName) => {
+  print(bandName)
+})
 // Select bands for visualization and apply band-specific scale factors.
 var rgb = dataset.select('Oa02_radiance')
               //.median()
