@@ -88,7 +88,22 @@ var bandFactors=[
 ]
 
 bandNames.forEach(function(bandName) {
-  print(bandName)
+  print("processing:",bandName)
+  var band = dataset.select(bandName2GEE[bandName])
+              .first()
+  var bandGood = vjerojatnosti[bandName]["good"]
+  var thresholds = bandGood["thresholds"]
+  //print("rgb.gt:",rgb.gt(thresholds))
+  var classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
+  var fromList = bandGood["from"] 
+  var toList = bandGood["to"]
+  var bandGoodVjerojatnosti = classified.remap({
+    from: fromList,
+    to: toList,
+    defaultValue: 0,
+  })
+
+  
 })
 // Select bands for visualization and apply band-specific scale factors.
 var rgb = dataset.select('Oa02_radiance')
