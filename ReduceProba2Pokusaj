@@ -39,7 +39,7 @@ var bandName2GEE = {}
 for (var i=1;i<=21;i++) {
   var bandName = createBandNames(i)
   bandNames.push(bandName)
-  bandName2GEE["bandName"] = bands[i-1]
+  bandName2GEE[bandName] = bands[i-1]
 }
 
 print("XXX",bandName2GEE)
