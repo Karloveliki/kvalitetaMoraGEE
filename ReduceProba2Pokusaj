@@ -105,7 +105,7 @@ bandNames.forEach(function(bandName) {
     defaultValue: 0,
   })
 
-  bandBad = vjerojatnosti[bandName]["bad"]
+  var bandBad = vjerojatnosti[bandName]["bad"]
   thresholds = bandBad["thresholds"]
   classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
   fromList = bandBad["from"] 
