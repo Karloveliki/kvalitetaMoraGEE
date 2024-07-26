@@ -144,5 +144,5 @@ var pointCollection = ee.FeatureCollection([pointFeature]);
 // Add the point to the map
 Map.addLayer(pointCollection, {color: 'green'}, 'My Marker');
 }
-  
+putMarkerOnPoint(16.25972271,43.51976944)
 
