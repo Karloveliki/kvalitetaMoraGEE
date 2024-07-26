@@ -132,3 +132,17 @@ var kvaliteta =  umnozakGood.gte(umnozakBad);
 Map.centerObject(roi, 10);
 Map.addLayer(kvaliteta, {min: 0, max: 1, palette: ['red', 'blue']}, 'Kvaliteta mora', true, 0.5);
 
+function putMakerOnPoint(x,y){
+var pointCoords = ee.Geometry.Point([x, y]); // Replace with your coordinates
+
+// Create a feature collection with the point
+var pointFeature = ee.Feature(pointCoords, {'label': 'proba'});
+
+// Create a FeatureCollection to hold the point
+var pointCollection = ee.FeatureCollection([pointFeature]);
+
+// Add the point to the map
+Map.addLayer(pointCollection, {color: 'green'}, 'My Marker');
+}
+  
+
