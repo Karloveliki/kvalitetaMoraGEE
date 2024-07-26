@@ -172,7 +172,8 @@ var kvaliteta =  umnozakGood.gte(umnozakBad);
 Map.centerObject(roi, 10);
 Map.addLayer(kvaliteta, {min: 0, max: 1, palette: ['red', 'blue']}, 'Kvaliteta mora', true, 0.5);
 
-for (var [key, value] of Object.entries(plaze)) {
-  putMarkerOnPoint(value)
+for (var value in plaze) {
+  //putMarkerOnPoint(value)
+  print(value)
 }
 
