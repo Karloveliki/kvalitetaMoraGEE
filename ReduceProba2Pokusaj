@@ -131,7 +131,7 @@ var umnozakGood = null
 var umnozakBad = null
 
 bandNames.forEach(function(bandName) {
-  print("processing:",bandName)
+  //print("processing:",bandName)
   var band = dataset.select(bandName2GEE[bandName])
               .first()
   var bandGood = vjerojatnosti[bandName]["good"]
