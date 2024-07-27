@@ -178,7 +178,7 @@ function calcValid(dataSet) {
   var invalid = preveliki.or(premali).clip(roi)
   //print(losi)
   //return invalid
-  return preveliki
+  return prevelik
 } 
 
 var invalid = calcValid(dataset)
