@@ -157,10 +157,11 @@ bandNames.forEach(function(bandName) {
     defaultValue: 0,
   })
 
-  if (umnozakGood == null) {
+  if (umnozakGood === null) {
     umnozakGood = bandGoodVjerojatnosti
     umnozakBad = bandBadVjerojatnosti
   } else {
+    umnozaGood.multiply(bandGoodVjerojatnosti)
     umnozakBad.multiply(bandBadVjerojatnosti)
   }
 })
