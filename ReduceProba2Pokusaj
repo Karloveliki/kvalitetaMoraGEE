@@ -177,8 +177,7 @@ function calcValid(dataSet) {
   var premali = allBands.lte(0).reduce('sum').toInt().gt(0)
   var invalid = preveliki.or(premali).clip(roi)
   //print(losi)
-  //return invalid
-  return prevelik
+  return invalid
 } 
 
 var invalid = calcValid(dataset)
