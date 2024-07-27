@@ -175,7 +175,7 @@ function calcValid(dataSet) {
   var allBands = dataSet.select(bands).first()
   var preveliki = allBands.gt(189).reduce('sum').toInt().gt(0)
   var premali = allBands.lt(0).reduce('sum').toInt().gt(0)
-  var invalid = preveliki.or(premali)
+  var invalid = preveliki.or(premali).clip(roi)
   //print(losi)
   return invalid
 } 
