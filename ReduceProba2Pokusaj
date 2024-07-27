@@ -101,7 +101,7 @@ roi= ee.Geometry.Polygon(
 
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
-                  .filterDate('2018-06-30', '2018-07-15');
+                  .filterDate('2017-08-30', '2017-09-15');
 
 var bandFactors=[
     0.0139465,
