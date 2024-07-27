@@ -173,8 +173,8 @@ var kvaliteta =  umnozakGood.gt(umnozakBad).clip(roi);
 // make Map that has 1 for valid pixels and 0 for invalid
 function calcValid(dataSet) {
   var allBands = dataSet.select(bands).first()
-  var preveliki = allBands.gt(189)
-  var premali = allBands.lt(0)
+  var preveliki = allBands.gt(189).reduce('sum').toInt().gt(0)
+  var premali = allBands.lt(0).reduce('sum').toInt().gt(0)
   var invalid = preveliki.or(premali)
   //print(losi)
   return invalid
