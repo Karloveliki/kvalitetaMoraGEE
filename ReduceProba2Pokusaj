@@ -129,6 +129,7 @@ var bandFactors=[
 
 var umnozakGood = null
 var umnozakBad = null
+
 bandNames.forEach(function(bandName) {
   print("processing:",bandName)
   var band = dataset.select(bandName2GEE[bandName])
@@ -162,12 +163,11 @@ bandNames.forEach(function(bandName) {
   } else {
     umnozakBad.multiply(bandBadVjerojatnosti)
   }
-
 })
 
 print("--------------")
 
-var kvaliteta =  umnozakGood.gte(umnozakBad).clip(roi);
+var kvaliteta =  umnozakGood.gt(umnozakBad).clip(roi);
 
 Map.centerObject(roi, 10);
 Map.addLayer(kvaliteta, {min: 0, max: 1, palette: ['red', 'blue']}, 'Kvaliteta mora', true, 0.5);
