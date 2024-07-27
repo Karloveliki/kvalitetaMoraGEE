@@ -172,11 +172,13 @@ var kvaliteta =  umnozakGood.gt(umnozakBad).clip(roi);
 
 // make Map that has 1 for valid pixels and 0 for invalid
 function calcValid(dataSet) {
-  var band = dataset.select(bands).first()
-  
-  
+  var allBands = dataSet.select(bands).first()
+  var preveliki = allBands.gt(189)
+  var premali = allBands.lt(0)
+  print(preveliki)
 } 
 
+calcValid(dataset)
 
 Map.centerObject(roi, 12);
 Map.addLayer(kvaliteta, {min: 0, max: 1, palette: ['red', 'blue']}, 'Kvaliteta mora', true, 0.5);
