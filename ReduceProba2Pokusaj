@@ -176,7 +176,8 @@ function calcValid(dataSet) {
   var preveliki = allBands.gt(189)
   var premali = allBands.lt(0)
   var losi = preveliki.or(premali)
-  print(losi)
+  //print(losi)
+  return losi
 } 
 
 calcValid(dataset)
