@@ -251,7 +251,8 @@ function krajeviBandova(vjerojatnosti){
 ////////////////////////////////////////////////////////////////////////////
 
 // Define ae.Geometry.Point([16.289002780181892,43.3944748974847]);
-krajeviBandova(vjerojatnosti)
+// krajeviBandova(vjerojatnosti)
+
 var roi= rois["izClanka"]["geometry"]
 
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
