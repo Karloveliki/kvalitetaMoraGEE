@@ -163,7 +163,7 @@ function bandProbability(band,probabilityIntervals){
   })
 }
 
-izracunKvaliteta(dataset,vjerojatnosti)
+var kvaliteta=izracunKvaliteta(dataset,vjerojatnosti)
 print("--------------")
 
 
