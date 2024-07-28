@@ -152,10 +152,10 @@ function izracunKvalitete(data,vjerojatnosti){
     return kvaliteta
 }
 function bandProbability(band,probabilityIntervals){
-  thresholds = probabilityIntervals["thresholds"]
-  classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
-  fromList = probabilityIntervals["from"] 
-  toList = probabilityIntervals["to"]
+  var thresholds = probabilityIntervals["thresholds"]
+  var classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
+  var fromList = probabilityIntervals["from"] 
+  var toList = probabilityIntervals["to"]
   return classified.remap({
     from: fromList,
     to: toList,
@@ -163,7 +163,7 @@ function bandProbability(band,probabilityIntervals){
   })
 }
 
-var kvaliteta=izracunKvaliteta(dataset,vjerojatnosti)
+var kvaliteta=izracunKvalitete(dataset,vjerojatnosti)
 print("--------------")
 
 
