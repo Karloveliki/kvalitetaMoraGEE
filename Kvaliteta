@@ -237,11 +237,13 @@ function placeMarkers(plaze) {
 function krajeviBandova(vjerojatnosti){
    bandNames.forEach(function(bandName) {
     var bandGood = vjerojatnosti[bandName]["good"]
-    var threshold= bandGood["thresholds"]
-    print(threshold[threshold.length-1])
+    var thresholdGood= bandGood["thresholds"]
+   // print ("threshold je:",threshold)
+    print(thresholdGood[thresholdGood.length-1])
   
-  //  var bandBad = vjerojatnosti[bandName]["bad"]
-  //  print(bandBad[bandBad.length-1])
+    var bandBad = vjerojatnosti[bandName]["bad"]
+    var thresholdBad=bandBad ["thresholds"]
+     print(thresholdBad[thresholdBad.length-1])
    })
 }
 ////////////////////////////////////////////////////////////////////////////
