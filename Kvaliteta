@@ -257,7 +257,7 @@ var roi= rois["izClanka"]["geometry"]
 
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
-                  .filterDate('2017-08-30', '2017-09-15');
+                  .filterDate('2018-07-06', '2018-07-15');
 
 var kvaliteta=izracunKvalitete(dataset,vjerojatnosti)
 print("--------------")
@@ -268,7 +268,7 @@ var validKvaliteta = invalid.multiply(2).add(kvaliteta)
 Map.centerObject(roi, 12);
 //Map.addLayer(kvaliteta, {min: 0, max: 1, palette: ['black', 'white']}, 'Kvaliteta mora', true, 0.5);
 //Map.addLayer(invalid, {min: 0, max: 1, palette: ['white', 'gray']}, 'Invalid', true, 0.5);
-Map.addLayer(validKvaliteta, {min: 0, max: 3, palette: ['red', 'blue', 'grey', 'gray']}, 'Kvaliteta mora', true, 0.5);
+Map.addLayer(validKvaliteta, {min: 0, max: 3, palette: ['red', 'blue', 'yellow', 'yellow']}, 'Kvaliteta mora', true, 0.5);
 
 placeMarkers(plaze)
 
