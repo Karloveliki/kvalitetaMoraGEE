@@ -239,7 +239,7 @@ function placeMarkers(plaze) {
 ////////////////////////////////////////////////////////////////////////////
 
 // Define ae.Geometry.Point([16.289002780181892,43.3944748974847]);
-var roi= rois["izCLanka"]["geometry"]
+var roi= rois["izClanka"]["geometry"]
 
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
