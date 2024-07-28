@@ -127,61 +127,46 @@ var bandFactors=[
     0.00324118
 ]
 
-var umnozakGood = null
-var umnozakBad = null
+
 function izracunKvalitete(data,vjerojatnosti){
-   var band = data.select(bandName2GEE[bandName])
-              .first()
-  var bandGood = vjerojatnosti[bandName]["good"]
-  var thresholds = bandGood["thresholds"]
-  var classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
-  var fromList = bandGood["from"] 
-  var toList = bandGood["to"]
-  var bandGoodVjerojatnosti = classified.remap({
+      var umnozakGood = null
+      var umnozakBad = null
+    bandNames.forEach(function(bandName) {
+      var band = data.select(bandName2GEE[bandName])
+                  .first()
+      var bandGood = vjerojatnosti[bandName]["good"]
+      var bandGoodVjerojatnosti=bandProbability(band,bandGood)
+    
+      var bandBad = vjerojatnosti[bandName]["bad"]
+      var bandBadVjerojatnosti=bandProbability(band,bandBad)
+    
+      if (umnozakGood === null) {
+        umnozakGood = bandGoodVjerojatnosti
+        umnozakBad = bandBadVjerojatnosti
+      } else {
+        umnozakGood.multiply(bandGoodVjerojatnosti)
+        umnozakBad.multiply(bandBadVjerojatnosti)
+      }
+    })
+    var kvaliteta =  umnozakGood.gt(umnozakBad).clip(roi);
+    return kvaliteta
+}
+function bandProbability(band,probabilityIntervals){
+  thresholds = probabilityIntervals["thresholds"]
+  classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
+  fromList = probabilityIntervals["from"] 
+  toList = probabilityIntervals["to"]
+  return classified.remap({
     from: fromList,
     to: toList,
     defaultValue: 0,
   })
 }
-bandNames.forEach(function(bandName) {
-  //print("processing:",bandName)
-  var band = dataset.select(bandName2GEE[bandName])
-              .first()
-  var bandGood = vjerojatnosti[bandName]["good"]
-  var thresholds = bandGood["thresholds"]
-  //print("rgb.gt:",rgb.gt(thresholds))
-  var classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
-  var fromList = bandGood["from"] 
-  var toList = bandGood["to"]
-  var bandGoodVjerojatnosti = classified.remap({
-    from: fromList,
-    to: toList,
-    defaultValue: 0,
-  })
 
-  var bandBad = vjerojatnosti[bandName]["bad"]
-  thresholds = bandBad["thresholds"]
-  classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
-  fromList = bandBad["from"] 
-  toList = bandBad["to"]
-  var bandBadVjerojatnosti = classified.remap({
-    from: fromList,
-    to: toList,
-    defaultValue: 0,
-  })
-
-  if (umnozakGood === null) {
-    umnozakGood = bandGoodVjerojatnosti
-    umnozakBad = bandBadVjerojatnosti
-  } else {
-    umnozakGood.multiply(bandGoodVjerojatnosti)
-    umnozakBad.multiply(bandBadVjerojatnosti)
-  }
-})
-
+izracunKvaliteta(dataset,vjerojatnosti)
 print("--------------")
 
-var kvaliteta =  umnozakGood.gt(umnozakBad).clip(roi);
+
 
 // make Map that has 1 for valid pixels and 0 for invalid
 function calcValid(dataSet) {
