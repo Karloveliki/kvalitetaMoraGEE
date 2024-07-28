@@ -222,7 +222,7 @@ function calcValid(dataSet) {
   var allBands = dataSet.select(bands).first()
   print("allbands:",allBands)
   var preveliki = allBands.gt(189).reduce('sum').toInt().gt(0)
-  var premali = allBands.lte(0).reduce('sum').toInt().gt(0)
+  var premali = allBands.lt(0).reduce('sum').toInt().gt(0)
   var invalid = preveliki.or(premali).clip(roi)
   //print(losi)
   return invalid
@@ -230,15 +230,26 @@ function calcValid(dataSet) {
 
 function placeMarkers(plaze) {
   for (var key in plaze) {
-  putMarkerOnPoint(plaze[key])
+    putMarkerOnPoint(plaze[key])
+  }
 }
 
+function krajeviBandova(vjerojatnosti){
+   bandNames.forEach(function(bandName) {
+    var bandGood = vjerojatnosti[bandName]["good"]
+    var threshold= bandGood["thresholds"]
+    print(threshold[threshold.length-1])
+  
+  //  var bandBad = vjerojatnosti[bandName]["bad"]
+  //  print(bandBad[bandBad.length-1])
+   })
 }
 ////////////////////////////////////////////////////////////////////////////
 //##########################################################################
 ////////////////////////////////////////////////////////////////////////////
 
 // Define ae.Geometry.Point([16.289002780181892,43.3944748974847]);
+krajeviBandova(vjerojatnosti)
 var roi= rois["izClanka"]["geometry"]
 
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
