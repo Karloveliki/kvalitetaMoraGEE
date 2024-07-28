@@ -166,7 +166,7 @@ function placeMarkers(plaze) {
 ////////////////////////////////////////////////////////////////////////////
 
 // Define ae.Geometry.Point([16.289002780181892,43.3944748974847]);
-roi= ee.Geometry.Polygon(
+var roi= ee.Geometry.Polygon(
 [[ 
 
   [16.246564530619207,43.47703654992279],
