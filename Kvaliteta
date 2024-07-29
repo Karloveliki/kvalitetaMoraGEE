@@ -253,11 +253,11 @@ function krajeviBandova(vjerojatnosti){
 // Define ae.Geometry.Point([16.289002780181892,43.3944748974847]);
 // krajeviBandova(vjerojatnosti)
 
-var roi= rois["izClanka"]["geometry"]
+var roi= rois["ciovo"]["geometry"]
 
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
-                  .filterDate('2024-07-06', '2024-07-15');
+                  .filterDate('2024-05-28', '2024-05-29');
 
 var kvaliteta=izracunKvalitete(dataset,vjerojatnosti)
 print("--------------")
@@ -267,7 +267,7 @@ var validKvaliteta = invalid.multiply(2).add(kvaliteta)
 
 Map.centerObject(roi, 12);
 //Map.addLayer(kvaliteta, {min: 0, max: 1, palette: ['black', 'white']}, 'Kvaliteta mora', true, 0.5);
-Map.addLayer(invalid, {min: 0, max: 1, palette: ['white', 'pink']}, 'Invalid', true, 0.5);
+//Map.addLayer(invalid, {min: 0, max: 1, palette: ['white', 'pink']}, 'Invalid', true, 0.5);
 Map.addLayer(validKvaliteta, {min: 0, max: 3, palette: ['red', 'blue', 'yellow', 'yellow']}, 'Kvaliteta mora', true, 0.5);
 
 placeMarkers(plaze)
