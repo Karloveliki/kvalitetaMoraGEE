@@ -1,6 +1,9 @@
-var pixels = [
-  [[1, 2, 3], [11, 22, 33]],
-  [[111, 222, 333], [1111, 2222, 3333]]
-];
+var band1 = ee.Image(ee.Array([[1, 11], [111, 1111]])).rename('band1');
+var band2 = ee.Image(ee.Array([[2, 22], [222, 2222]])).rename('band2');
+var band3 = ee.Image(ee.Array([[3, 33], [333, 3333]])).rename('band3');
 
-var image = ee.Image(pixels).rename(['band1', 'band2', 'band3']);
+// Combine the bands into a single image
+var image = band1.addBands(band2).addBands(band3);
+
+// Print the image object to the console to verify
+print(image);
