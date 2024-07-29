@@ -1,6 +1,16 @@
-var slika = new ee.Image([ 
-  [ [11, 22, 33], [1, 2, 3] ] , 
-  [ [111, 222, 333], [1111, 2222, 3333] ]
-  ])
-  
-print(slika)
+// Define the pixel values as lists
+var pixel00 = [1, 2, 3];
+var pixel01 = [11, 22, 33];
+var pixel10 = [111, 222, 333];
+var pixel11 = [1111, 2222, 3333];
+
+// Create a list of lists representing the image data
+var imageData = [pixel00, pixel01, pixel10, pixel11];
+
+// Create an Earth Engine image from the data
+var image = ee.Image(imageData)
+  .toArray() // Convert to an array image
+  .arrayReshape([2, 2, 3], []); // Reshape to 2x2 pixels with 3 bands
+
+// Print the image
+print(image);
