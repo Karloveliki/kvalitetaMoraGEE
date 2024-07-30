@@ -190,6 +190,7 @@ function points2Image(pointList){
         [pointList[2][bandName], pointList[3][bandName]]
       ])
     ).rename(bands[i-1]);
+    band.dimensions = [2,2]
     if (img == null) {
       print("inif")
       img = band
