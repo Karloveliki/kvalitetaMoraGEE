@@ -67,6 +67,7 @@ function izracunKvalitete(img,vjerojatnosti){
   var umnozakBad = null
   bandNames.forEach(function(bandName) {
     var band = img.select(bandName2GEE[bandName])
+    print("bandada", band)
     var bandGood = vjerojatnosti[bandName]["good"]
     var bandGoodVjerojatnosti=bandProbability(band,bandGood)
   
