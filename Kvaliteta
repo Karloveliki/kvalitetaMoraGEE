@@ -183,6 +183,7 @@ function putMarkerOnPoint(plaza){
 function bandProbability(band,probabilityIntervals){
   var thresholds = probabilityIntervals["thresholds"]
   var classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
+  print("class", classified)
   var fromList = probabilityIntervals["from"] 
   var toList = probabilityIntervals["to"]
   return classified.remap({
