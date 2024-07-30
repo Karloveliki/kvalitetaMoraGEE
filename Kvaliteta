@@ -199,6 +199,7 @@ function izracunKvalitete(data,vjerojatnosti){
   bandNames.forEach(function(bandName) {
     var band = data.select(bandName2GEE[bandName])
                 .first()
+    print("bandada", band)
     var bandGood = vjerojatnosti[bandName]["good"]
     var bandGoodVjerojatnosti=bandProbability(band,bandGood)
   
