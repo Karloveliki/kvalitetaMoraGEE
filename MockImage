@@ -83,7 +83,7 @@ function izracunKvalitete(img,vjerojatnosti){
   })
   print("umnozak good", umnozakGood)
   print("umnozak bad", umnozakBad)
-  var kvaliteta =  umnozakGood.gt(umnozakBad).clip(roi);
+  var kvaliteta =  umnozakGood.gt(umnozakBad);
   return kvaliteta
 }
 
