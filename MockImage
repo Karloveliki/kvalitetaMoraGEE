@@ -189,7 +189,7 @@ function points2Image(pointList){
       print("inif")
       img = band
     } else {
-      img.addBands(band)
+      img = img.addBands(band)
     }
   }
   return img
