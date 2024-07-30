@@ -50,6 +50,42 @@ function putMarkerOnPoint(plaza){
   // Add the point to the map
   Map.addLayer(pointCollection, {color: 'green'}, 'My Marker');
 }
+function bandProbability(band,probabilityIntervals){
+  var thresholds = probabilityIntervals["thresholds"]
+  var classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
+  var fromList = probabilityIntervals["from"] 
+  var toList = probabilityIntervals["to"]
+  return classified.remap({
+    from: fromList,
+    to: toList,
+    defaultValue: 0,
+  })
+}
+
+function izracunKvalitete(img,vjerojatnosti){
+  var umnozakGood = null
+  var umnozakBad = null
+  bandNames.forEach(function(bandName) {
+    var band = img.select(bandName2GEE[bandName])
+    var bandGood = vjerojatnosti[bandName]["good"]
+    var bandGoodVjerojatnosti=bandProbability(band,bandGood)
+  
+    var bandBad = vjerojatnosti[bandName]["bad"]
+    var bandBadVjerojatnosti=bandProbability(band,bandBad)
+  
+    if (umnozakGood === null) {
+      umnozakGood = bandGoodVjerojatnosti
+      umnozakBad = bandBadVjerojatnosti
+    } else {
+      umnozakGood.multiply(bandGoodVjerojatnosti)
+      umnozakBad.multiply(bandBadVjerojatnosti)
+    }
+  })
+  print("umnozak good", umnozakGood)
+  print("umnozak bad", umnozakBad)
+  var kvaliteta =  umnozakGood.gt(umnozakBad).clip(roi);
+  return kvaliteta
+}
 
 var pointArray=[{
         'B01': 44.5,
