@@ -184,7 +184,9 @@ function points2Image(pointList){
         [pointList[2][bandName], pointList[3][bandName]]
       ])
     ).rename(bands[i-1]);
+    print("generated band", band)
     if (img == null) {
+      print("inif")
       img = band
     } else {
       img.addBands(band)
