@@ -90,9 +90,15 @@ var pointArray=[{
         'B20': 1,
         'B21': 2
       }]
+      
+function points2Bands(pointList){
+  for(var i=1;i<=21;i++){
+}      
+      
 var band1 = ee.Image(ee.Array([[1, 11], [111, 1111]])).rename('band1');
 var band2 = ee.Image(ee.Array([[2, 22], [222, 2222]])).rename('band2');
 var band3 = ee.Image(ee.Array([[3, 33], [333, 3333]])).rename('band3');
+
 
 // Combine the bands into a single image
 var image = band1.addBands(band2).addBands(band3);
