@@ -186,11 +186,10 @@ function points2Image(pointList){
   for(var i=1;i<=21;i++){
     var bandName=createBandNames(i)
     var band=ee.Image(ee.Array([
-        [pointList[0][bandName], pointList[1][bandName]], 
-        [pointList[2][bandName], pointList[3][bandName]]
+        pointList[0][bandName], pointList[1][bandName], 
+        pointList[2][bandName], pointList[3][bandName]
       ])
     ).rename(bands[i-1]);
-    band.dimensions = [2,2]
     if (img == null) {
       print("inif")
       img = band
