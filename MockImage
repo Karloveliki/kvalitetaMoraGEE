@@ -191,13 +191,12 @@ function points2Image(pointList){
       ])
     ).rename(bands[i-1]);
     if (img == null) {
-      print("inif")
       img = band
     } else {
       img = img.addBands(band)
     }
   }
-  return img
+  return img.int32()
 }
  
 var img=points2Image(pointArray)
