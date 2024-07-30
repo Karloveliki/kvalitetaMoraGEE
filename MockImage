@@ -175,7 +175,8 @@ var pointArray=[{
         'B21': 2
       }]
       
-function points2Bands(pointList){
+function points2Image(pointList){
+  var img = null
   for(var i=1;i<=21;i++){
     var bandName=createBandNames(i)
     var band=ee.Image(ee.Array([
@@ -183,8 +184,17 @@ function points2Bands(pointList){
         [pointList[2][bandName], pointList[3][bandName]]
       ])
     ).rename(bands[i-1]);
-}      
+    if (img == null) {
+      img = band
+    } else {
+      img.addBands(band)
+    }
+  }
+  return img
+}
+ 
       
+/*      
 var band1 = ee.Image(ee.Array([[1, 11], [111, 1111]])).rename('band1');
 var band2 = ee.Image(ee.Array([[2, 22], [222, 2222]])).rename('band2');
 var band3 = ee.Image(ee.Array([[3, 33], [333, 3333]])).rename('band3');
@@ -195,3 +205,4 @@ var image = band1.addBands(band2).addBands(band3);
 
 // Print the image object to the console to verify
 print(image);
+*/
