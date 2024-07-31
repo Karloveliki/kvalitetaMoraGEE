@@ -2,7 +2,7 @@
 function createSinglePixelImageWithDifferentValues() {
   // Create a list of 21 random values
   var randomValues = ee.List.sequence(1, 21).map(function(i) {
-    return Random.number(0, 100); // Adjust range as needed
+    return i*10 % 7; // Adjust range as needed
   });
 
   // Create a constant image for each value
