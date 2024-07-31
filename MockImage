@@ -222,9 +222,12 @@ print(img)
 
 var izracun = izracunKvalitete(img, vjerojatnosti)
 var kvaliteta = izracun[0]
-var umnozakGoog = izracun[1]
+var umnozakGood = izracun[1]
 print("kvaliteta", kvaliteta)
-var statistika = 
+print(umnozakGood.reduceRegion({
+  // Use ee.Reducer.minMax() to get min and max for each band
+  reducer: ee.Reducer.minMax()
+}))
 /*      
 var band1 = ee.Image(ee.Array([[1, 11], [111, 1111]])).rename('band1');
 var band2 = ee.Image(ee.Array([[2, 22], [222, 2222]])).rename('band2');
