@@ -1,3 +1,9 @@
 
-var img = ee.Image.constant([7, 3, 4, 1])
+var img = ee.Image.constant([7, 3, 44, 1])
 print(img)
+var thresholds = ee.Image([0, 5, 18, 30]); //Define the thresholds
+
+var band0 = img.select("constant_0")
+print("band0", band0)
+var classified = band0.gt(thresholds)
+print("classified", classified)
