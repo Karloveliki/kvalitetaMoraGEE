@@ -229,4 +229,3 @@ print(umnozakGood.reduceRegion({
   reducer: ee.Reducer.minMax(),
   geometry: umnozakGood.geometry
 }))
-/*      
