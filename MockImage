@@ -80,8 +80,8 @@ function izracunKvalitete(img,vjerojatnosti){
       umnozakGood = bandGoodVjerojatnosti
       umnozakBad = bandBadVjerojatnosti
     } else {
-      umnozakGood.multiply(bandGoodVjerojatnosti)
-      umnozakBad.multiply(bandBadVjerojatnosti)
+      umnozakGood = umnozakGood.multiply(bandGoodVjerojatnosti)
+      umnozakBad = umnozakBad.multiply(bandBadVjerojatnosti)
     }
   })
   print("umnozak good", umnozakGood)
