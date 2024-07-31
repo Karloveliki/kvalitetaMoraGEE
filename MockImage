@@ -194,7 +194,8 @@ function point2Image(point) {
     } else {
       img = band
     }    
-  }  
+  }
+  return img
 }
 
 function points2Image(pointList){
