@@ -234,5 +234,5 @@ print(umnozakGood.reduceRegion({
 print(umnozakBad.reduceRegion({
   // Use ee.Reducer.minMax() to get min and max for each band
   reducer: ee.Reducer.minMax(),
-  geometry: ee.Geometry.Badt([45, 45])
+  geometry: ee.Geometry.Point([45, 45])
 }))
