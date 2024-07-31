@@ -223,7 +223,7 @@ print(img)
 var izracun = izracunKvalitete(img, vjerojatnosti)
 var kvaliteta = izracun[0]
 var umnozakGood = izracun[1]
-var umnozakBad = izracun[1]
+var umnozakBad = izracun[2]
 print("kvaliteta", kvaliteta)
 print(umnozakGood.reduceRegion({
   // Use ee.Reducer.minMax() to get min and max for each band
