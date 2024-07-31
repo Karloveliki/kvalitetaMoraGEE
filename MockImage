@@ -215,7 +215,7 @@ function points2Image(pointList){
 }
  
 //var img=points2Image(pointArray)
-var img = point2Array(pointArray[0])
+var img = point2Image(pointArray[0])
 print(img)
 
 //var kvaliteta = izracunKvalitete(img, vjerojatnosti)
