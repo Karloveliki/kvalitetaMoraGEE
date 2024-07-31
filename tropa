@@ -5,5 +5,6 @@ var thresholds = ee.Image([0, 5, 18, 30]); //Define the thresholds
 
 var band0 = img.select("constant_0")
 print("band0", band0)
-var classified = band0.gt(thresholds)
-print("classified", classified)
+var  greaterThan= band0.gt(thresholds)
+print("gt", greaterThan)
+var classified = greaterThan.reduce(sum)
