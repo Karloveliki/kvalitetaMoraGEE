@@ -12,6 +12,7 @@ function createSinglePixelImageWithDifferentValues() {
 
   // Combine images into a single image with 21 bands
   var imageWithBands = imageList[0]
+  print("il", imageList.slice(1))
   imageList.slice(1).forEach( function(i){ imageWithBands.addBands(i)})
 
   return imageWithBands;
