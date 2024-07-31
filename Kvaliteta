@@ -220,7 +220,7 @@ function izracunKvalitete(data,vjerojatnosti){
 // make Map that has 1 for valid pixels and 0 for invalid
 function calcValid(dataSet) {
   var allBands = dataSet.select(bands).first()
-  print("allbands:",allBands)
+  //print("allbands:",allBands)
   var preveliki = allBands.gt(189).reduce('sum').toInt().gt(0)
   var premali = allBands.lt(0).reduce('sum').toInt().gt(0)
   var invalid = preveliki.or(premali).clip(roi)
