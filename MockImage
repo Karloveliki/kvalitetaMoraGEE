@@ -220,8 +220,8 @@ function points2Image(pointList){
 var img = point2Image(pointArray[0])
 print(img)
 
-//var kvaliteta = izracunKvalitete(img, vjerojatnosti)
-//print("kvaliteta", kvaliteta)
+var kvaliteta = izracunKvalitete(img, vjerojatnosti)
+print("kvaliteta", kvaliteta)
 /*      
 var band1 = ee.Image(ee.Array([[1, 11], [111, 1111]])).rename('band1');
 var band2 = ee.Image(ee.Array([[2, 22], [222, 2222]])).rename('band2');
