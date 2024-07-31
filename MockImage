@@ -52,9 +52,9 @@ function putMarkerOnPoint(plaza){
 }
 function bandProbability(band,probabilityIntervals){
   var thresholds = probabilityIntervals["thresholds"]
-  print("th", thresholds, band.gt(thresholds))
+  //print("th", thresholds, band.gt(thresholds))
   var classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
-  print(classified)
+  //print(classified)
   var fromList = probabilityIntervals["from"] 
   var toList = probabilityIntervals["to"]
   return classified.remap({
@@ -69,7 +69,7 @@ function izracunKvalitete(img,vjerojatnosti){
   var umnozakBad = null
   bandNames.forEach(function(bandName) {
     var band = img.select(bandName2GEE[bandName])
-    print("bandada", band)
+    //print("bandada", band)
     var bandGood = vjerojatnosti[bandName]["good"]
     var bandGoodVjerojatnosti=bandProbability(band,bandGood)
   
