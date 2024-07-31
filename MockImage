@@ -87,7 +87,7 @@ function izracunKvalitete(img,vjerojatnosti){
   print("umnozak good", umnozakGood)
   print("umnozak bad", umnozakBad)
   var kvaliteta =  umnozakGood.gt(umnozakBad);
-  return kvaliteta
+  return [kvaliteta, umnozakGood, umnozakBad]
 }
 
 var pointArray=[{
@@ -220,8 +220,11 @@ function points2Image(pointList){
 var img = point2Image(pointArray[0])
 print(img)
 
-var kvaliteta = izracunKvalitete(img, vjerojatnosti)
+var izracun = izracunKvalitete(img, vjerojatnosti)
+var kvaliteta = izracun[0]
+var umnozakGoog = izracun[1]
 print("kvaliteta", kvaliteta)
+var statistika = 
 /*      
 var band1 = ee.Image(ee.Array([[1, 11], [111, 1111]])).rename('band1');
 var band2 = ee.Image(ee.Array([[2, 22], [222, 2222]])).rename('band2');
