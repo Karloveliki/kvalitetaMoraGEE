@@ -211,8 +211,8 @@ function izracunKvalitete(data,vjerojatnosti){
       umnozakGood = bandGoodVjerojatnosti
       umnozakBad = bandBadVjerojatnosti
     } else {
-      umnozakGood.multiply(bandGoodVjerojatnosti)
-      umnozakBad.multiply(bandBadVjerojatnosti)
+      umnozakGood = umnozakGood.multiply(bandGoodVjerojatnosti)
+      umnozakBad = umnozakBad.multiply(bandBadVjerojatnosti)
     }
   })
   var kvaliteta =  umnozakGood.gt(umnozakBad).clip(roi);
