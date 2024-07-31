@@ -226,17 +226,7 @@ var umnozakGood = izracun[1]
 print("kvaliteta", kvaliteta)
 print(umnozakGood.reduceRegion({
   // Use ee.Reducer.minMax() to get min and max for each band
-  reducer: ee.Reducer.minMax()
+  reducer: ee.Reducer.minMax(),
+  geometry: umnozakGood.geometry
 }))
 /*      
-var band1 = ee.Image(ee.Array([[1, 11], [111, 1111]])).rename('band1');
-var band2 = ee.Image(ee.Array([[2, 22], [222, 2222]])).rename('band2');
-var band3 = ee.Image(ee.Array([[3, 33], [333, 3333]])).rename('band3');
-
-
-// Combine the bands into a single image
-var image = band1.addBands(band2).addBands(band3);
-
-// Print the image object to the console to verify
-print(image);
-*/
