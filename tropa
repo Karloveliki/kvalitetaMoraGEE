@@ -11,7 +11,8 @@ function createSinglePixelImageWithDifferentValues() {
   });
 
   // Combine images into a single image with 21 bands
-  var imageWithBands = ImageCollection(imageList).toImage();
+  var imageWithBands = imageList[0]
+  imageList[1:].forEach( i=> imageWithBands.addBands(i))
 
   return imageWithBands;
 }
