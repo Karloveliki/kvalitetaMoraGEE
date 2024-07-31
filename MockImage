@@ -184,11 +184,12 @@ var pointArray=[{
       }]
       
 function point2Image(point) {
+  var img
   for (i=1; i<=21; i++) {
     var bandValue = point[createBandNames(i)]    
     var band = ee.Image.constant(bandValue)
     band = band.rename(bands[i-1])
-    if (i>0) {
+    if (i>1) {
       img = img.addBands(band)
     } else {
       img = band
