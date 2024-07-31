@@ -1,3 +1,3 @@
 
-var img = Image.constant([7, 3, 4, 1])
+var img = ee.Image.constant([7, 3, 4, 1])
 print(img)
