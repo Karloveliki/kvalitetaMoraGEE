@@ -183,6 +183,19 @@ var pointArray=[{
         'B21': 2
       }]
       
+function point2Image(point) {
+  for (i=1; i<=21; i++) {
+    var bandValue = point[bandName(i)]    
+    var band = ee.Image.constant(bandValue)
+    band = band.rename(bands[i-1])
+    if (i>0) {
+      img = img.addBands(band)
+    } else {
+      img = band
+    }    
+  }  
+}
+
 function points2Image(pointList){
   var img = null
   for(var i=1;i<=21;i++){
@@ -201,11 +214,12 @@ function points2Image(pointList){
   return img.int32()
 }
  
-var img=points2Image(pointArray)
+//var img=points2Image(pointArray)
+var img = ponit2Array(pointArray[0])
 print(img)
 
-var kvaliteta = izracunKvalitete(img, vjerojatnosti)
-print("kvaliteta", kvaliteta)
+//var kvaliteta = izracunKvalitete(img, vjerojatnosti)
+//print("kvaliteta", kvaliteta)
 /*      
 var band1 = ee.Image(ee.Array([[1, 11], [111, 1111]])).rename('band1');
 var band2 = ee.Image(ee.Array([[2, 22], [222, 2222]])).rename('band2');
