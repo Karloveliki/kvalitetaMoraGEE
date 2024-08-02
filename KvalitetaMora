@@ -10,7 +10,9 @@ var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
                   //.filterDate('2022-07-06', '2022-07-7');
                   .filterDate('2018-08-06', '2018-08-30');
-
+if(dataset.size()<1){
+  print("nije nasao sliku")
+}
 
 var kvaliteta=library.izracunKvalitete(dataset,library.vjerojatnosti,roi)
 print("--------------")
