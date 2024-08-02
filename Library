@@ -178,8 +178,8 @@ function putMarkerOnPoint(plaza){
   var pointFeature = ee.Feature(pointCoords, {'label': plaza.ime});
   // Create a FeatureCollection to hold the point
   
-  // Add the point to the map
- 
+  
+ return pointFeature
 }
 function placeMarkers(plaze) {
   var list=[]
@@ -188,6 +188,7 @@ function placeMarkers(plaze) {
     list.push(pointFeature)
   }
   var pointCollection = ee.FeatureCollection(list);
+  // Add the point to the map
    Map.addLayer(pointCollection, {color: 'green'}, 'Plaze');
 }
 
