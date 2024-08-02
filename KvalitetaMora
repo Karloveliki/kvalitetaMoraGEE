@@ -13,7 +13,7 @@ var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
 var kvaliteta=library.izracunKvalitete(dataset,library.vjerojatnosti,roi)
 print("--------------")
 
-var invalid = library.calcValid(dataset)
+var invalid = library.calcValid(dataset,roi)
 var validKvaliteta = invalid.multiply(2).add(kvaliteta)
 
 Map.centerObject(roi, 12);
