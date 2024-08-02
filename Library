@@ -195,7 +195,7 @@ function bandProbability(band,probabilityIntervals){
 }
 
 
-function izracunKvalitete(data,vjerojatnosti){
+function izracunKvalitete(data,vjerojatnosti,roi){
   var umnozakGood = null
   var umnozakBad = null
   bandNames.forEach(function(bandName) {
