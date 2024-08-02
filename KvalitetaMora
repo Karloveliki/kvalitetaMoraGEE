@@ -1,0 +1,6 @@
+// Import the module
+var library = require('users/perkovickarlo5/proba:Library').myModule;
+
+// Use the imported module
+//print(myModule.publicFunction());
+
