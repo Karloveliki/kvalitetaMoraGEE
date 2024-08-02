@@ -1,0 +1,20 @@
+// Define the module
+var myModule = (function() {
+  var privateVariable = 'Hello, Earth Engine!';
+
+  function privateFunction() {
+    return privateVariable;
+  }
+
+  function publicFunction() {
+    return privateFunction();
+  }
+
+  // Expose public functions
+  return {
+    publicFunction: publicFunction
+  };
+})();
+
+// Export the module
+exports.myModule = myModule;
