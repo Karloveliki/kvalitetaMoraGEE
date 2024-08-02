@@ -177,9 +177,18 @@ function putMarkerOnPoint(plaza){
   // Create a feature collection with the point
   var pointFeature = ee.Feature(pointCoords, {'label': plaza.ime});
   // Create a FeatureCollection to hold the point
-  var pointCollection = ee.FeatureCollection([pointFeature]);
+  
   // Add the point to the map
-  Map.addLayer(pointCollection, {color: 'green'}, 'My Marker');
+ 
+}
+function placeMarkers(plaze) {
+  var list=[]
+  for (var key in plaze) {
+    var pointFeature=putMarkerOnPoint(plaze[key])
+    list.push(pointFeature)
+  }
+  var pointCollection = ee.FeatureCollection(list);
+   Map.addLayer(pointCollection, {color: 'green'}, 'Plaze');
 }
 
 function bandProbability(band,probabilityIntervals){
@@ -230,11 +239,7 @@ function calcValid(dataSet,roi) {
   return invalid
 } 
 
-function placeMarkers(plaze) {
-  for (var key in plaze) {
-    putMarkerOnPoint(plaze[key])
-  }
-}
+
 
 function krajeviBandova(vjerojatnosti){
    bandNames.forEach(function(bandName) {
