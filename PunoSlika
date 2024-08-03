@@ -1,3 +1,9 @@
+var library = require('users/perkovickarlo5/proba:Library').myModule;
+
+// Use the imported module
+//print(myModule.publicFunction());
+
+var roi= library.rois["ciovo"]["geometry"]
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
                   //.filterDate('2022-07-06', '2022-07-7');
