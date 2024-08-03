@@ -18,11 +18,13 @@ print(prva)
 function getImageProperties(image) {
   var timeStart = image.get('system:time_start');
   var dimensions = image.geometry().bounds().coordinates();
-
-  return {
+  print(
+    {
     timeStart: timeStart,
     dimensions: dimensions
-  };
+    }
+  ) 
+  return image
 }
 
 // Map the functions to the image collection
