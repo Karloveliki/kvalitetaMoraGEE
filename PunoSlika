@@ -31,7 +31,7 @@ var getImageInfo = function(image) {
 };
 
 // Map the function over the image collection
-var imageInfoCollection = sentinel3.map(getImageInfo);
+var imageInfoCollection = dataset.map(getImageInfo);
 
 // Convert to a feature collection and print
 var imageInfoFeatures = ee.FeatureCollection(imageInfoCollection);
