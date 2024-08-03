@@ -10,3 +10,26 @@ var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterDate('2017-02-04', '2017-02-10');
 
 print("broj slika je",dataset.size())
+var prva = dataset.first()
+print(prva)
+
+
+// Function to get image properties
+function getImageProperties(image) {
+  var timeStart = image.get('system:time_start');
+  var dimensions = image.geometry().bounds().coordinates();
+  var cloudCover = image.get('cloud_cover');
+
+  return {
+    timeStart: timeStart,
+    dimensions: dimensions,
+    cloudCover: cloudCover
+  };
+}
+
+// Map the functions to the image collection
+//var imagesWithCloudCover = sentinel3.map(addCloudCover);
+var imageProperties = dataset.map(getImageProperties);
+
+// Print the image properties
+print(imageProperties);
