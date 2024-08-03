@@ -13,23 +13,26 @@ print("broj slika je",dataset.size())
 var prva = dataset.first()
 print(prva)
 
+// Function to get the image acquisition time and dimensions
+var getImageInfo = function(image) {
+  // Get the image metadata properties
+  var time = image.get('system:time_start');
+  var width = ee.Number(image.get('system:width'));
+  var height = ee.Number(image.get('system:height'));
+  
+  // Create a feature to store the metadata
+  var info = ee.Feature(null, {
+    'time': time,
+    'width': width,
+    'height': height
+  });
+  
+  return info;
+};
 
-// Function to get image properties
-function getImageProperties(image) {
-  var timeStart = image.get('system:time_start');
-  var dimensions = image.geometry().bounds().coordinates();
-  print(
-    {
-    timeStart: timeStart,
-    dimensions: dimensions
-    }
-  ) 
-  return image
-}
+// Map the function over the image collection
+var imageInfoCollection = sentinel3.map(getImageInfo);
 
-// Map the functions to the image collection
-//var imagesWithCloudCover = sentinel3.map(addCloudCover);
-var imageProperties = dataset.map(getImageProperties);
-
-// Print the image properties
-print(imageProperties);
+// Convert to a feature collection and print
+var imageInfoFeatures = ee.FeatureCollection(imageInfoCollection);
+print(imageInfoFeatures);
