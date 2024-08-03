@@ -207,10 +207,12 @@ function izracunKvalitete(data,vjerojatnosti,roi){
   var umnozakGood = null
   var umnozakBad = null
   bandNames.forEach(function(bandName) {
+    
+    
     var band = data.select(bandName2GEE[bandName])
-                .first()
+                .median()
     var bandGood = vjerojatnosti[bandName]["good"]
-    var bandGoodVjerojatnosti=bandProbability(band,bandGood)
+median bandGoodVjerojatnosti=bandProbability(band,bandGood)
   
     var bandBad = vjerojatnosti[bandName]["bad"]
     var bandBadVjerojatnosti=bandProbability(band,bandBad)
