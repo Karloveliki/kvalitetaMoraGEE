@@ -18,12 +18,10 @@ print(prva)
 function getImageProperties(image) {
   var timeStart = image.get('system:time_start');
   var dimensions = image.geometry().bounds().coordinates();
-  var cloudCover = image.get('cloud_cover');
 
   return {
     timeStart: timeStart,
-    dimensions: dimensions,
-    cloudCover: cloudCover
+    dimensions: dimensions
   };
 }
 
