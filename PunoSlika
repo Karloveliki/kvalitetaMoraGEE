@@ -34,9 +34,43 @@ var stats2 = secondImage.reduceRegion({
   // Optional: Set the scale (pixel resolution) for the analysis
   // scale: 30 // Example scale in meters
 });
+var stats3 = thirdImage.reduceRegion({
+  // Use ee.Reducer.minMax() to get min and max for each band
+  reducer: ee.Reducer.minMax(),
+  // Specify the region geometry
+  geometry: roi,
+  // Optional: Set the scale (pixel resolution) for the analysis
+  // scale: 30 // Example scale in meters
+});
 
 print("min i max za sve bandove za prvu sliku:", stats)
 print("min i max za sve bandove za drugu sliku:", stats2)
+print("min i max za sve bandove za trecu sliku:", stats3)
+
+function calculateNaNPercentage(image) {
+  // Create a mask for NaN values
+  var nanMask = image.mask().not();
+
+  // Calculate total number of pixels
+  var totalPixels = image.mask().reduceRegion({
+    reducer: ee.Reducer.count(),
+    geometry: image.geometry(),
+    scale: 30 // Adjust scale as needed
+  }).get('count');
+
+  // Calculate number of NaN pixels
+  var nanPixels = nanMask.reduceRegion({
+    reducer: ee.Reducer.count(),
+    geometry: image.geometry(),
+    scale: 30 // Adjust scale as needed
+  }).get('count');
+
+  // Calculate percentage of NaN pixels
+  var nanPercentage = ee.Number(nanPixels).divide(totalPixels).multiply(100);
+
+  return nanPercentage;
+}
+print("postotak NaN na slici",calculateNaNPercentage(prva))
 // Function to get the image acquisition time and dimensions
 var getImageInfo = function(image) {
   // Get the image metadata properties
