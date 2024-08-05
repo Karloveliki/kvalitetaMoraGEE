@@ -55,15 +55,17 @@ function calculateNaNPercentage(image) {
   var totalPixels = image.mask().reduceRegion({
     reducer: ee.Reducer.count(),
     geometry: image.geometry(),
-    scale: 100 // Adjust scale as needed
+    scale: 10000 // Adjust scale as needed
   }).get('count');
 
   // Calculate number of NaN pixels
   var nanPixels = nanMask.reduceRegion({
     reducer: ee.Reducer.count(),
     geometry: image.geometry(),
-    scale: 100 // Adjust scale as needed
-  }).get('count');
+    scale: 10000 // Adjust scale as needed
+  })
+  print("nanPixels", nanPixels)
+  nanPixels = nanPixels.get('count');
 
   // Calculate percentage of NaN pixels
   var nanPercentage = ee.Number(nanPixels).divide(totalPixels).multiply(100);
