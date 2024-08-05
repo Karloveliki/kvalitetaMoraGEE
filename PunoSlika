@@ -57,7 +57,7 @@ var calculateNaNPercentage = function(bandName) {
   var totalPixels = band.reduceRegion({
     reducer: ee.Reducer.count(),
     geometry: prva.geometry(),
-    scale: 30, // Adjust scale as necessary
+    scale: 10000, // Adjust scale as necessary
     maxPixels: 1e15
   }).get(bandName);
   
@@ -68,7 +68,7 @@ var calculateNaNPercentage = function(bandName) {
   var nanPixels = nanMask.reduceRegion({
     reducer: ee.Reducer.count(),
     geometry: prva.geometry(),
-    scale: 30, // Adjust scale as necessary
+    scale: 10000, // Adjust scale as necessary
     maxPixels: 1e15
   }).get(bandName);
   
