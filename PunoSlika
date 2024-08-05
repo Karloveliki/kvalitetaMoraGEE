@@ -12,7 +12,12 @@ var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
 print("broj slika je",dataset.size())
 var prva = dataset.first()
 print(prva)
-
+// Convert ImageCollection to a List
+var imageList = dataset.toList(dataset.size());
+// Extract the first, second, and third images
+var firstImage = ee.Image(imageList.get(0));
+var secondImage = ee.Image(imageList.get(1));
+var thirdImage = ee.Image(imageList.get(2));
 var stats = prva.reduceRegion({
   // Use ee.Reducer.minMax() to get min and max for each band
   reducer: ee.Reducer.minMax(),
@@ -21,8 +26,17 @@ var stats = prva.reduceRegion({
   // Optional: Set the scale (pixel resolution) for the analysis
   // scale: 30 // Example scale in meters
 });
+var stats2 = secondImage.reduceRegion({
+  // Use ee.Reducer.minMax() to get min and max for each band
+  reducer: ee.Reducer.minMax(),
+  // Specify the region geometry
+  geometry: roi,
+  // Optional: Set the scale (pixel resolution) for the analysis
+  // scale: 30 // Example scale in meters
+});
 
-print("min i max za sve bandove, vidi B01 i B10", stats)
+print("min i max za sve bandove za prvu sliku:", stats)
+print("min i max za sve bandove za drugu sliku:", stats2)
 // Function to get the image acquisition time and dimensions
 var getImageInfo = function(image) {
   // Get the image metadata properties
