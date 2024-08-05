@@ -47,32 +47,41 @@ print("min i max za sve bandove za prvu sliku:", stats)
 print("min i max za sve bandove za drugu sliku:", stats2)
 print("min i max za sve bandove za trecu sliku:", stats3)
 
-function calculateNaNPercentage(image) {
-  // Create a mask for NaN values
-  var nanMask = image.mask().not();
+var bandNames = prva.bandNames();
+var numBands = bandNames.size();
 
+var calculateNaNPercentage = function(bandName) {
+  var band = image.select(bandName);
+  
   // Calculate total number of pixels
-  var totalPixels = image.mask().reduceRegion({
+  var totalPixels = band.reduceRegion({
     reducer: ee.Reducer.count(),
     geometry: image.geometry(),
-    scale: 10000 // Adjust scale as needed
-  }).get('count');
-
+    scale: 30, // Adjust scale as necessary
+    maxPixels: 1e9
+  }).get(bandName);
+  
+  // Mask non-NaN values
+  var nanMask = band.mask(band.neq(band));
+  
   // Calculate number of NaN pixels
   var nanPixels = nanMask.reduceRegion({
     reducer: ee.Reducer.count(),
     geometry: image.geometry(),
-    scale: 10000 // Adjust scale as needed
-  })
-  print("nanPixels", nanPixels)
-  nanPixels = nanPixels.get('count');
-
-  // Calculate percentage of NaN pixels
+    scale: 30, // Adjust scale as necessary
+    maxPixels: 1e9
+  }).get(bandName);
+  
+  // Calculate percentage of NaN values
   var nanPercentage = ee.Number(nanPixels).divide(totalPixels).multiply(100);
-
+  
   return nanPercentage;
-}
-print("postotak NaN na slici",calculateNaNPercentage(prva))
+};
+var nanPercentages = bandNames.map(calculateNaNPercentage);
+
+// Print the results
+print('NaN percentages for each band:', nanPercentages);
+
 // Function to get the image acquisition time and dimensions
 var getImageInfo = function(image) {
   // Get the image metadata properties
