@@ -11,7 +11,8 @@ var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   //.filterDate('2022-07-06', '2022-07-7');
                  // .filterDate('2016-04-01', '2016-04-30');
                  // .filterDate('2018-07-01', '2018-07-30');
-                 .filterDate('2020-08-06', '2020-08-10');
+                // .filterDate('2020-08-06', '2020-08-10');
+                .filterDate('2019-12-06', '2019-12-08');
 if(dataset.size()<1){
   print("nije nasao sliku")
 }
