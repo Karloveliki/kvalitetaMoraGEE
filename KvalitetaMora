@@ -9,7 +9,9 @@ var roi= library.rois["ciovo"]["geometry"]
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
                   //.filterDate('2022-07-06', '2022-07-7');
-                  .filterDate('2015-01-04', '2015-02-10');
+                 // .filterDate('2016-04-01', '2016-04-30');
+                 // .filterDate('2018-07-01', '2018-07-30');
+                 .filterDate('2020-08-06', '2020-08-10');
 if(dataset.size()<1){
   print("nije nasao sliku")
 }
