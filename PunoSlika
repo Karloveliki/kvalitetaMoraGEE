@@ -51,14 +51,14 @@ var bandNames = prva.bandNames();
 var numBands = bandNames.size();
 
 var calculateNaNPercentage = function(bandName) {
-  var band = image.select(bandName);
+  var band = prva.select([bandName]);
   
   // Calculate total number of pixels
   var totalPixels = band.reduceRegion({
     reducer: ee.Reducer.count(),
-    geometry: image.geometry(),
+    geometry: prva.geometry(),
     scale: 30, // Adjust scale as necessary
-    maxPixels: 1e9
+    maxPixels: 1e15
   }).get(bandName);
   
   // Mask non-NaN values
@@ -67,9 +67,9 @@ var calculateNaNPercentage = function(bandName) {
   // Calculate number of NaN pixels
   var nanPixels = nanMask.reduceRegion({
     reducer: ee.Reducer.count(),
-    geometry: image.geometry(),
+    geometry: prva.geometry(),
     scale: 30, // Adjust scale as necessary
-    maxPixels: 1e9
+    maxPixels: 1e15
   }).get(bandName);
   
   // Calculate percentage of NaN values
