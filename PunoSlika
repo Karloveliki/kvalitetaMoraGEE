@@ -62,7 +62,7 @@ function createBandNames(n) {
   print("bands je:",bands)
   print("band 10 value:",bands["Oa10_radiance"])
   print("band 10 value:",bands.Oa10_radiance)
-  print("band 10 value:",bands.select("Oa10_radiance"))
+  print("band 10 value:",bands.get(2))
   print(bands.keys())
 
      for(var i=1;i<22;i++){
