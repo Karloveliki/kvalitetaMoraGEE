@@ -50,7 +50,6 @@ function createBandNames(n) {
     return 'Oa0' + String(n) + "_radiance"
   }
 
-print(createBandNames(10))
   function provjeraPraznaSlika(image){
      var bands = image.reduceRegion({
       // Use ee.Reducer.minMax() to get min and max for each band
@@ -60,7 +59,7 @@ print(createBandNames(10))
       // Optional: Set the scale (pixel resolution) for the analysis
       // scale: 30 // Example scale in meters
     });
-    
+  print("bands je:",bands)
   print("band 10 value:",bands["Oa10_radiance"])
 
     var bandValue=0
@@ -68,7 +67,7 @@ print(createBandNames(10))
   /*  for(var i=1;i<22;i++){
       listBandNames.push(createBandNames(i))
     }*/
-     print("bands je:",bands)
+    
      for(var i=1;i<22;i++){
         bandValue= bands[createBandNames(i)]
         print("bandValue je:",bandValue)
