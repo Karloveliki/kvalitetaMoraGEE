@@ -45,7 +45,9 @@ var myModule = (function() {
     
     "Baletna škola": {"grad": "Kaštela", "lng": 16.37871623, "lat": 43.54825262, "ime":"Baletna škola",
     "mjerenje": [{"2024-07-29":"izvrsno"}, {"2024-07-15":"izvrsno"},
-    {"2024-07-01":"izvrsno"},{"2024-06-17": "izvrsno"}, {"2024-06-03":"izvrsno"},{"2024-05-20":"izvrsno"}]}
+    {"2024-07-01":"izvrsno"},{"2024-06-17": "izvrsno"}, {"2024-06-03":"izvrsno"},{"2024-05-20":"izvrsno"}]},
+    
+    
     
     
 }
