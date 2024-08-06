@@ -36,7 +36,7 @@ var stats2 = secondImage.reduceRegion({
 });
 var stats3 = thirdImage.reduceRegion({
   // Use ee.Reducer.minMax() to get min and max for each band
-  reducer: ee.Reducer.minMax(),
+  reducer: ee.Reducer.min(),
   // Specify the region geometry
   geometry: roi,
   // Optional: Set the scale (pixel resolution) for the analysis
@@ -45,11 +45,12 @@ var stats3 = thirdImage.reduceRegion({
 
 function createBandNames(n) {
   if (n>9) {
-    return '0a' + String(n) + "_radiance"
+    return 'Oa' + String(n) + "_radiance"
   }
-    return '0a0' + String(n) + "_radiance"
+    return 'Oa0' + String(n) + "_radiance"
   }
 
+print(createBandNames(10))
   function provjeraPraznaSlika(image){
      var bands = image.reduceRegion({
       // Use ee.Reducer.minMax() to get min and max for each band
@@ -60,78 +61,24 @@ function createBandNames(n) {
       // scale: 30 // Example scale in meters
     });
     
-  
-  //  print(bands)
+  print("band 10 value:",bands["Oa10_radiance"])
+
     var bandValue=0
-    for(var i=1;i<22;i++){
-      bandValue=bands[createBandNames(i)]
-      if(bandValue == null){
-         print("slika je prazna")
-         return true
+    var listBandNames=[]
+  /*  for(var i=1;i<22;i++){
+      listBandNames.push(createBandNames(i))
+    }*/
+     print("bands je:",bands)
+     for(var i=1;i<22;i++){
+        bandValue= bands[createBandNames(i)]
+        print("bandValue je:",bandValue)
+        if(bandValue == null){
+           print("slika je prazna")
+           return true
+        }
       }
-    }
     return false
   }
 print(provjeraPraznaSlika(thirdImage))
-print("min i max za sve bandove za prvu sliku:", stats)
-print("min i max za sve bandove za drugu sliku:", stats2)
-print("min i max za sve bandove za trecu sliku:", stats3)
-
-var bandNames = prva.bandNames();
-var numBands = bandNames.size();
-
-var calculateNaNPercentage = function(bandName) {
-  var band = prva.select([bandName]);
-  
-  // Calculate total number of pixels
-  var totalPixels = band.reduceRegion({
-    reducer: ee.Reducer.count(),
-    geometry: prva.geometry(),
-    scale: 10000, // Adjust scale as necessary
-    maxPixels: 1e15
-  }).get(bandName);
-  
-  // Mask non-NaN values
-  var nanMask = band.mask(band.neq(band));
-  
-  // Calculate number of NaN pixels
-  var nanPixels = nanMask.reduceRegion({
-    reducer: ee.Reducer.count(),
-    geometry: prva.geometry(),
-    scale: 10000, // Adjust scale as necessary
-    maxPixels: 1e15
-  }).get(bandName);
-  
-  // Calculate percentage of NaN values
-  var nanPercentage = ee.Number(nanPixels).divide(totalPixels).multiply(100);
-  
-  return nanPercentage;
-};
-var nanPercentages = bandNames.map(calculateNaNPercentage);
-
-// Print the results
-print('NaN percentages for each band:', nanPercentages);
-
-// Function to get the image acquisition time and dimensions
-var getImageInfo = function(image) {
-  // Get the image metadata properties
-  var time = image.get('system:time_start');
-  var width = ee.Number(image.get('system:width'));
-  var height = ee.Number(image.get('system:height'));
-  
-  // Create a feature to store the metadata
-  var info = ee.Feature(null, {
-    'time': time,
-    'width': width,
-    'height': height
-  });
-  
-  return info;
-};
-
-// Map the function over the image collection
-var imageInfoCollection = dataset.map(getImageInfo);
-
-// Convert to a feature collection and print
-var imageInfoFeatures = ee.FeatureCollection(imageInfoCollection);
-print(imageInfoFeatures);
+print("min i max za sve bandove za prvu sliku:",stats)
+print("min i max za sve bandove za trecu sliku:",stats3)
