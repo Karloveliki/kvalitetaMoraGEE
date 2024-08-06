@@ -62,14 +62,9 @@ function createBandNames(n) {
   print("bands je:",bands)
   print("band 10 value:",bands["Oa10_radiance"])
 
-    var bandValue=0
-    var listBandNames=[]
-  /*  for(var i=1;i<22;i++){
-      listBandNames.push(createBandNames(i))
-    }*/
-    
+
      for(var i=1;i<22;i++){
-        bandValue= bands[createBandNames(i)]
+        var bandValue= bands[createBandNames(i)]
         print("bandValue je:",bandValue)
         if(bandValue == null){
            print("slika je prazna")
