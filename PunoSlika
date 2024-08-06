@@ -52,8 +52,8 @@ function praznaSlika(image){
     // scale: 30 // Example scale in meters
   });
   
-  for(var k in  bands){
-   // console.log(bands[k])
+  for(var i=0;i<22;i++){
+    print(bands[i])
   }
   
 }
