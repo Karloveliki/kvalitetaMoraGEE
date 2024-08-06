@@ -30,8 +30,8 @@ var myModule = (function() {
     "Đardin" : { "grad": "Kaštela", "lng": 16.34690523, "lat": 43.55038326, "ime":"Đardin" , "mjerenje": [{"2024-07-01": "zadovoljavajuće"},
      {"2024-06-17": "izvrsno " }, {"2024-06-03": "zadovoljavajuće"}, {"2024-05-20": "dobro"}]},
 
-    "Hotel Palace": { "grad": "Kaštela", "lng": 16.35452271, "lat": 43.55065541, "ime":"Hotel Palace" "mjerenje": [{"2024-07-01":"izvrsno"},{"2024-06-17":"izvrsno"},
-    {"2024-06-03":"izvrsno"},{"2024-05-20":"izvrsno"}]}
+  //  "Hotel Palace": { "grad": "Kaštela", "lng": 16.35452271, "lat": 43.55065541, "mjerenje": [{"2024-07-01":"izvrsno"},{"2024-06-17":"izvrsno"},
+  //  {"2024-06-03":"izvrsno"},{"2024-05-20":"izvrsno"}]}
    /*  
     "Miljenko i Dobrila": {"grad": "Kaštela", "lng": 16.35658264, "lat": 43.5507254 ,"mjerenje" : [{"2024-07-29": "izvrsno"},
     {"2024-07-15": "izvrsno"}, {"2024-07-01": "izvrsno"}, {"2024-06-17":"izvrsno"}, {"2024-06-03":"izvrsno"}, {"2024-05-20":"izvrsno"}]  },
