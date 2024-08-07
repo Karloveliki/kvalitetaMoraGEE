@@ -35,9 +35,9 @@ print(1, firstImage)
 print(2, secondImage)
 print(3, thirdImage)
 
-var rgbImage = firstImage
+var rgbImage = thirdImage
   .select('Oa02_radiance', 'Oa03_radiance', 'Oa04_radiance')
-  .clip(roi)
+  
   
 var visualizationParams = {
   bands: ['Oa02_radiance', 'Oa03_radiance', 'Oa04_radiance'],
@@ -45,7 +45,7 @@ var visualizationParams = {
   max: 1000
 };
 
-Map.centerObject(firstImage, 10); // Adjust zoom level and center as needed
+Map.centerObject(thirdImage, 10); // Adjust zoom level and center as needed
 Map.addLayer(rgbImage, visualizationParams, 'Sentinel-3 RGB');
 /*
 function createBandNames(n) {
