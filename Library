@@ -74,10 +74,39 @@ var myModule = (function() {
     
     "Uvala Kašjuni": {"grad": "Split", "lng":16.40024066, "lat":43.50535425, "ime":"Uvala Kašjuni",
     "mjerenje":[]
-    }
+    },
     
-    "Ježinac":
+    "Ježinac": {"grad": "Split", "lng":16.41730785, "lat":43.50353844, "ime":"Ježinac", 
+    "mjerenje":[]
+    },
     
+    "Zvončac": {"grad":"Split", "lng":16.42136335, "lat":43.50276024, "ime":"Zvončac",
+      "mjerenje":[]
+    },
+    
+    "Bačvice-zapad": {"grad":"Split", "lng":16.4460667, "lat":43.50060139, "ime":"Bačvice-zapad",
+    "mjerenje":[]},
+    
+    "Bačvice-ulaz": {"grad":"Split", "lng":16.44769358, "lat":43.50224067, "ime":"Bačvice-ulaz",
+      "mjerenje":[]},
+    
+    "Bačvice - istok": {"grad":"Split", "lng":16.44924606, "lat":43.50081249, "ime":"Bačvice - istok",
+      "mjerenje":[]},
+      
+    "Firule": {"grad":"Split", "lng": 16.4535284, "lat":43.50028549, "ime":"Firule",
+      "mjerenje":[]},
+    
+    "Trstenik-Radoševac": {"grad":"Split", "lng":16.46632791, "lat":43.50163183, "ime":"Trstenik-Radoševac",
+    "mjerenje":[]},
+
+    "Žnjan - istok": {"grad":"Split", "lng":16.48093356, "lat":43.50147023, "ime":"Žnjan - istok",
+    "mjerenje":[]},
+    
+    "Duilovo": {"grad":"Split", "lng":16.49398685, "lat":43.50139837, "ime":"Duilovo", 
+    "mjerenje":[]},
+    
+    "Stobreč, ušće": {"grad":"Stobreč", "lng":16.52686327, "lat":43.50264372,"ime":"Stobreč, ušće",
+    "mjerenje":[]}
     
 }
 //var bands = ...
