@@ -60,19 +60,18 @@ function createBandNames(n) {
       // scale: 30 // Example scale in meters
     });
     
-  print("band 10 value:",bands.get("Oa10_radiance"))
-
+  print("band 10 value:",bands.get("Oa10_radiance"));
      for(var i=1;i<22;i++){
-        var bandValue= bands.get(createBandNames(i))
-       // print(bandValue)
-        if(bandValue === null){
-           print("slika je prazna")
-           return true
-        }
+        var bandValue= bands.get(createBandNames(i));
+        print(bandValue);
+       if(bandValue==null){
+         return true
+       }
+        
       }
-    print("slika nije prazna")
-    return false
+    print("slika nije prazna");
+    return false;
   }
-print(provjeraPraznaSlika(firstImage))
+print(provjeraPraznaSlika(prva))
 print("min i max za sve bandove za prvu sliku:",stats)
 print("min i max za sve bandove za trecu sliku:",stats3)
