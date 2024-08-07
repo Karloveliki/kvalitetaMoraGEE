@@ -39,7 +39,7 @@ function provjeraPraznaSlika(image){
   var count = image.reduceRegion({
     reducer: ee.Reducer.count(),
     geometry: image.geometry(),
-    scale: 30
+    scale: 30,
     maxPixels: 10e12
   });
 
