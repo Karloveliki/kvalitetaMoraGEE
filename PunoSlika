@@ -40,6 +40,7 @@ function provjeraPraznaSlika(image){
     reducer: ee.Reducer.count(),
     geometry: image.geometry(),
     scale: 30
+    maxPixels: 10e12
   });
 
   // Check if the count is zero
