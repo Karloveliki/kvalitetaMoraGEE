@@ -48,4 +48,4 @@ function provjeraPraznaSlika(image){
   return false;
 }
   
-print(provjeraPraznaSlika(prva))
+print("Prazna li ne?", provjeraPraznaSlika(prva))
