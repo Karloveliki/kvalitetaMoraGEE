@@ -3,13 +3,27 @@ var library = require('users/perkovickarlo5/proba:Library').myModule;
 // Use the imported module
 //print(myModule.publicFunction());
 
+function hasValidData(image) {
+  // Check if the image has any unmasked pixels
+  var maskSum = image.mask().reduceRegion({
+    reducer: ee.Reducer.sum(),
+    geometry: image.geometry(),
+    scale: 30
+  }).get('sum');
+  return maskSum > 0;
+}
+
+
 var roi= library.rois["ciovo"]["geometry"]
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
                   //.filterDate('2022-07-06', '2022-07-7');
-                  .filterDate('2017-02-04', '2017-02-10');
+                  .filterDate('2017-02-04', '2017-02-10')
+                  .filter(hasValidData)
 
 print("broj slika je",dataset.size())
+
+/*
 var prva = dataset.first()
 print(prva)
 // Convert ImageCollection to a List
@@ -64,3 +78,4 @@ function provjeraPraznaSlika(image){
 }
   
 print("Prazna li ne?", provjeraPraznaSlika(prva))
+*/
