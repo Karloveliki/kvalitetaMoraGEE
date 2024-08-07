@@ -38,7 +38,7 @@ function provjeraPraznaSlika(image){
   print("band 10 value:",bands.get("Oa10_radiance"));
   for(var i=1;i<22;i++){
     var bandValue= bands.get(createBandNames(i));
-    print("band:", i, bandValue);
+    print("band:", i, bandValue.idesh());
     if(bandValue == null){
       print("slika je prazna")
       return true
