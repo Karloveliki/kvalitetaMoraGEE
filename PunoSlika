@@ -19,7 +19,7 @@ var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
                   //.filterDate('2022-07-06', '2022-07-7');
                   .filterDate('2017-02-04', '2017-02-10')
-                  .filter(ee.Filter.evaluate(hasValidData))
+                  .filter(ee.Filter().evaluate(hasValidData))
 
 print("broj slika je",dataset.size())
 
