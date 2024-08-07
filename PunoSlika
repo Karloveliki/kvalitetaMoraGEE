@@ -35,7 +35,10 @@ print(1, firstImage)
 print(2, secondImage)
 print(3, thirdImage)
 
-var rgbImage = firstImage.select('Oa02_radiance', 'Oa03_radiance', 'Oa04_radiance');
+var rgbImage = firstImage
+  .select('Oa02_radiance', 'Oa03_radiance', 'Oa04_radiance')
+  .clip(roi)
+  
 var visualizationParams = {
   bands: ['Oa02_radiance', 'Oa03_radiance', 'Oa04_radiance'],
   min: 0,
