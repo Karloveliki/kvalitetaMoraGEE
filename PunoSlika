@@ -39,7 +39,7 @@ function provjeraPraznaSlika(image){
   for(var i=1;i<22;i++){
     var bandValue= bands.get(createBandNames(i));
     print("band:", i, bandValue.idesh);
-    if(bandValue == null){
+    if(! bandValue){
       print("slika je prazna")
       return true
     }
