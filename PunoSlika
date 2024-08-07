@@ -43,6 +43,7 @@ function provjeraPraznaSlika(image){
   });
 
   // Check if the count is zero
+  print("count", count)
   if (count.getNumber('count') === 0) {
     print('Image has no valid pixels');
     return true
