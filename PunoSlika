@@ -19,13 +19,9 @@ var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
                   //.filterDate('2022-07-06', '2022-07-7');
                   .filterDate('2017-02-04', '2017-02-10')
-                  .filter(ee.Filter().custom(function(image) {
-                    return hasValudData(image)
-                  }))
 
 print("broj slika je",dataset.size())
 
-/*
 var prva = dataset.first()
 print(prva)
 // Convert ImageCollection to a List
@@ -35,8 +31,15 @@ var firstImage = ee.Image(imageList.get(0));
 var secondImage = ee.Image(imageList.get(1));
 var thirdImage = ee.Image(imageList.get(2));
 
+print(1, firstImage)
+print(2, secondImage)
+print(3, thirdImage)
+
+
+/*
 function createBandNames(n) {
   if (n>9) {
+print(1, firstImage)
     return 'Oa' + String(n) + "_radiance"
   }
     return 'Oa0' + String(n) + "_radiance"
