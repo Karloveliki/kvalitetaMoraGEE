@@ -35,6 +35,18 @@ function provjeraPraznaSlika(image){
     // Optional: Set the scale (pixel resolution) for the analysis
     // scale: 30 // Example scale in meters
   });
+  
+  var count = image.reduceRegion({
+    reducer: ee.Reducer.count(),
+    geometry: image.geometry(),
+    scale: 30
+  });
+
+  // Check if the count is zero
+  if (count.getNumber('count') === 0) {
+    print('Image has no valid pixels');
+    return true
+  }
   print("band 10 value:",bands.get("Oa10_radiance"));
   for(var i=1;i<22;i++){
     var bandValue= bands.get(createBandNames(i));
