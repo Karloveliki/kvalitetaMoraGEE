@@ -48,12 +48,35 @@ var myModule = (function() {
     {"2024-07-01":"izvrsno"},{"2024-06-17": "izvrsno"}, {"2024-06-03":"izvrsno"},
     {"2024-05-20":"izvrsno"}]},
     
-    "Torac": {"grad":"Kaštela", "lng":16.39122436,"lat":43.5481621,"ime":"Torac",
+    "Torac": {"grad":"Kaštela", "lng":16.39122436,"lat":43.5481621,"ime":"Kamp",
       "mjerenje":[]
+    },
+    
+    "Kamp": {"grad": "Kaštela", "lng":16.39763602, "lat":43.54721696,"ime":"Kamp",
+    "mjerenje":[]
+    },
+    
+    "Gojača": {"grad": "Kaštela", "lng":16.4280409, "lat":43.54504596, "ime": "Gojača",
+      "mjerenje":[]
+    },
+    
+    "Gusar": {"grad": "Kaštela", "lng":16.42533302, "lat":43.51645513, "ime":"Gusar",
+      "mjerenje":[]
+    },
+    
+    "Bene": {"grad":"Bene", "lng":16.4012672, "lat":43.51438256, "ime":"Bene",
+    "mjerenje":[]
+    },
+    
+    "Kašjuni": {"grad": "Split", "lng":16.40024628, "lat":43.50652525, "ime":"Kašjuni",
+    "mjerenje":[]
+    },
+    
+    "Uvala Kašjuni": {"grad": "Split", "lng":16.40024066, "lat":43.50535425, "ime":"Uvala Kašjuni",
+    "mjerenje":[]
     }
     
-    
-    
+    "Ježinac":
     
     
 }
