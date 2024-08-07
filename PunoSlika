@@ -18,30 +18,6 @@ var imageList = dataset.toList(dataset.size());
 var firstImage = ee.Image(imageList.get(0));
 var secondImage = ee.Image(imageList.get(1));
 var thirdImage = ee.Image(imageList.get(2));
-var stats = prva.reduceRegion({
-  // Use ee.Reducer.minMax() to get min and max for each band
-  reducer: ee.Reducer.min(),
-  // Specify the region geometry
-  geometry: roi,
-  // Optional: Set the scale (pixel resolution) for the analysis
-  // scale: 30 // Example scale in meters
-});
-var stats2 = secondImage.reduceRegion({
-  // Use ee.Reducer.minMax() to get min and max for each band
-  reducer: ee.Reducer.minMax(),
-  // Specify the region geometry
-  geometry: roi,
-  // Optional: Set the scale (pixel resolution) for the analysis
-  // scale: 30 // Example scale in meters
-});
-var stats3 = thirdImage.reduceRegion({
-  // Use ee.Reducer.minMax() to get min and max for each band
-  reducer: ee.Reducer.min(),
-  // Specify the region geometry
-  geometry: roi,
-  // Optional: Set the scale (pixel resolution) for the analysis
-  // scale: 30 // Example scale in meters
-});
 
 function createBandNames(n) {
   if (n>9) {
@@ -73,5 +49,3 @@ function provjeraPraznaSlika(image){
 }
   
 print(provjeraPraznaSlika(prva))
-print("min i max za sve bandove za prvu sliku:",stats)
-print("min i max za sve bandove za trecu sliku:",stats3)
