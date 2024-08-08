@@ -13,14 +13,34 @@ function hasValidData(image) {
   return maskSum > 0;
 }
 
+// Function to add a property indicating if an image is non-empty
+var addNonEmptyProperty = function(image) {
+  var stats = image.reduceRegion({
+    reducer: ee.Reducer.count(),
+    geometry: image.geometry(),
+    scale: 30,
+    maxPixels: 1e9
+  });
+  var isNonEmpty = ee.Number(stats.values().get(0)).gt(0);
+  return image.set('isNonEmpty', isNonEmpty);
+};
+
 
 var roi= library.rois["ciovo"]["geometry"]
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
                   //.filterDate('2022-07-06', '2022-07-7');
-                  .filterDate('2017-02-04', '2017-02-10')
+                  .filterDate('20 17-02-04', '2017-02-10')
 
 print("broj slika je",dataset.size())
+
+// Map over the collection to add the non-empty property
+var collectionWithProperty = dataset.map(addNonEmptyProperty);
+
+// Filter the collection based on the non-empty property
+var nonEmptyCollection = collectionWithProperty.filter(ee.Filter.eq('isNonEmpty', true));
+
+print("ima ne praznigh:", nonEmptyCollection.size)
 
 var prva = dataset.first()
 print(prva)
@@ -35,6 +55,7 @@ print(1, firstImage)
 print(2, secondImage)
 print(3, thirdImage)
 
+/*
 var rgbImage = thirdImage
   .select('Oa02_radiance', 'Oa03_radiance', 'Oa04_radiance')
   
@@ -56,6 +77,7 @@ print(1, firstImage)
     return 'Oa0' + String(n) + "_radiance"
 }
 
+*/
 function provjeraPraznaSlika(image){
    var bands = image.reduceRegion({
     // Use ee.Reducer.minMax() to get min and max for each band
