@@ -18,7 +18,7 @@ var addNonEmptyProperty = function(image) {
   var stats = image.reduceRegion({
     reducer: ee.Reducer.count(),
     geometry: image.geometry(),
-    scale: 30,
+    scale: 3000,
     maxPixels: 1e15
   });
   var isNonEmpty = ee.Number(stats.values().get(0)).gt(0);
