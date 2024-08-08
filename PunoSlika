@@ -40,7 +40,7 @@ var collectionWithProperty = dataset.map(addNonEmptyProperty);
 // Filter the collection based on the non-empty property
 var nonEmptyCollection = collectionWithProperty.filter(ee.Filter.eq('isNonEmpty', true));
 
-print("ima ne praznigh:", nonEmptyCollection.size)
+print("ima ne praznigh:", nonEmptyCollection.size())
 
 var prva = dataset.first()
 print(prva)
