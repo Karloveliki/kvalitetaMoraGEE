@@ -30,13 +30,14 @@ var roi= library.rois["ciovo"]["geometry"]
 var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                   .filterBounds(roi)
                   //.filterDate('2022-07-06', '2022-07-7');
-                  .filterDate('2017-02-04', '2017-02-28')
+                  //.filterDate('2017-02-04', '2017-02-28')
+                  .filterDate('2016-07-04', '2016-07-06')
 
 print("broj slika je",dataset.size())
 
 // Map over the collection to add the non-empty property
 var collectionWithProperty = dataset.map(addNonEmptyProperty);
-
+print("collectionWithProperty", collectionWithProperty)
 // Filter the collection based on the non-empty property
 var nonEmptyCollection = collectionWithProperty.filter(ee.Filter.eq('isNonEmpty', true));
 
