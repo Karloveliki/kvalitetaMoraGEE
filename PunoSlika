@@ -80,7 +80,7 @@ var totalPixelCount = qualityFlags.reduceRegion({
 
 // Calculate the number of valid pixels.
 var validPixelCount = totalPixelCount.get('quality_flags')
-  .subtract(invalidPixelCount.get('quality_flags'));
+  .sub(invalidPixelCount.get('quality_flags'));
 
 // Calculate the percentage of valid pixels.
 var percentageValid = validPixelCount.divide(totalPixelCount.get('quality_flags'))
