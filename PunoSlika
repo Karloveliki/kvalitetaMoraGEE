@@ -64,18 +64,19 @@ var qualityFlags = firstImage.select('quality_flags');
 // Create a mask to identify invalid pixels (bit 25 set).
 var invalidPixelMask = qualityFlags.bitwiseAnd(1 << 25).neq(0);
 
+var nativeScale = firstImage.projection().nominalScale();
 // Count the number of invalid pixels.
 var invalidPixelCount = invalidPixelMask.reduceRegion({
   reducer: ee.Reducer.sum(),
   geometry: firstImage.geometry(), // Use the image's geometry
-  scale: 30, // Choose an appropriate scale based on your image resolution
+  scale: nativeScale, // Choose an appropriate scale based on your image resolution
   maxPixels: 1e13 // Increase if necessary for large images
 });
 
 var totalPixelCount = qualityFlags.reduceRegion({
   reducer: ee.Reducer.count(),  // Use count() instead of sum()
   geometry: firstImage.geometry(),
-  scale: 30, // Choose an appropriate scale
+  scale: nativeScale, // Choose an appropriate scale
   maxPixels: 1e13
 });
 
