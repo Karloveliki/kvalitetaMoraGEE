@@ -68,7 +68,8 @@ var visualizationParams = {
 
 Map.centerObject(thirdImage, 10); // Adjust zoom level and center as needed
 Map.addLayer(rgbImage, visualizationParams, 'Sentinel-3 RGB');
-/*
+
+
 function createBandNames(n) {
   if (n>9) {
 print(1, firstImage)
@@ -77,7 +78,6 @@ print(1, firstImage)
     return 'Oa0' + String(n) + "_radiance"
 }
 
-*/
 function provjeraPraznaSlika(image){
    var bands = image.reduceRegion({
     // Use ee.Reducer.minMax() to get min and max for each band
