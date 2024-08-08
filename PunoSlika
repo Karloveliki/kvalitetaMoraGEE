@@ -56,6 +56,44 @@ print(1, firstImage)
 print(2, secondImage)
 print(3, thirdImage)
 
+
+
+// Select the 'quality_flags' band.
+var qualityFlags = firstImage.select('quality_flags');
+
+// Create a mask to identify invalid pixels (bit 25 set).
+var invalidPixelMask = qualityFlags.bitwiseAnd(1 << 25).neq(0);
+
+// Count the number of invalid pixels.
+var invalidPixelCount = invalidPixelMask.reduceRegion({
+  reducer: ee.Reducer.sum(),
+  geometry: firstImage.geometry(), // Use the image's geometry
+  scale: 30, // Choose an appropriate scale based on your image resolution
+  maxPixels: 1e13 // Increase if necessary for large images
+});
+var totalPixelCount = qualityFlags.reduceRegion({
+  reducer: ee.Reducer.count(),  // Use count() instead of sum()
+  geometry: firstImage.geometry(),
+  scale: 30, // Choose an appropriate scale
+  maxPixels: 1e13
+});
+
+// Calculate the number of valid pixels.
+var validPixelCount = totalPixelCount.get('quality_flags')
+  .subtract(invalidPixelCount.get('quality_flags'));
+
+// Calculate the percentage of valid pixels.
+var percentageValid = validPixelCount.divide(totalPixelCount.get('quality_flags'))
+  .multiply(100)
+  .getInfo();
+
+// Print the results.
+print('Total Pixels:', totalPixelCount.get('quality_flags'));
+// Print the result.
+print('Number of Invalid Pixels:', invalidPixelCount.get('quality_flags'));
+print('Percentage of Valid Pixels:', percentageValid);
+
+
 /*
 var rgbImage = thirdImage
   .select('Oa02_radiance', 'Oa03_radiance', 'Oa04_radiance')
