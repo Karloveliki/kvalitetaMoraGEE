@@ -71,6 +71,7 @@ var invalidPixelCount = invalidPixelMask.reduceRegion({
   scale: 30, // Choose an appropriate scale based on your image resolution
   maxPixels: 1e13 // Increase if necessary for large images
 });
+
 var totalPixelCount = qualityFlags.reduceRegion({
   reducer: ee.Reducer.count(),  // Use count() instead of sum()
   geometry: firstImage.geometry(),
@@ -79,19 +80,19 @@ var totalPixelCount = qualityFlags.reduceRegion({
 });
 
 // Calculate the number of valid pixels.
-var validPixelCount = totalPixelCount.get('quality_flags')
-  .sub(invalidPixelCount.get('quality_flags'));
+//var validPixelCount = totalPixelCount.get('quality_flags')
+//  .sub(invalidPixelCount.get('quality_flags'));
 
 // Calculate the percentage of valid pixels.
-var percentageValid = validPixelCount.divide(totalPixelCount.get('quality_flags'))
-  .multiply(100)
-  .getInfo();
+//var percentageValid = validPixelCount.divide(totalPixelCount.get('quality_flags'))
+//  .multiply(100)
+//  .getInfo();
 
 // Print the results.
 print('Total Pixels:', totalPixelCount.get('quality_flags'));
 // Print the result.
 print('Number of Invalid Pixels:', invalidPixelCount.get('quality_flags'));
-print('Percentage of Valid Pixels:', percentageValid);
+//print('Percentage of Valid Pixels:', percentageValid);
 
 
 /*
