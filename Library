@@ -317,7 +317,7 @@ function prikaziKvalitetu(dateFromGiven,givenRoi){
     var image = ee.Image(imageList.get(0));    
     print("image",  image)
         
-    viliteta=izracunKvalitete(image,vjerojatnosti,roi)
+    var kvaliteta=izracunKvalitete(image,vjerojatnosti,roi)
     
     var invalid = calcValid(image,roi)
     var validKvaliteta = invalid.multiply(2).add(kvaliteta)
