@@ -300,15 +300,19 @@ function prikaziKvalitetu(dateFromGiven,givenRoi){
                     // .filterDate('2020-08-06', '2020-08-10');
                    // .filterDate('2017-02-04', '2017-02-28');
                     .filterDate(dateFrom, dateFinal )
-                    .first();
+                    
     if(dataset.size()<1){
       print("nije nasao sliku")
     }
     print("broj slika je",dataset.size())
-    var kvaliteta=izracunKvalitete(dataset,vjerojatnosti,roi)
+    
+    var image = dataset.first()
+    image = maskWater(image)
+    
+    var kvaliteta=izracunKvalitete(image,vjerojatnosti,roi)
     print("--------------")
     
-    var invalid = calcValid(dataset,roi)
+    var invalid = calcValid(image,roi)
     var validKvaliteta = invalid.multiply(2).add(kvaliteta)
     
     
