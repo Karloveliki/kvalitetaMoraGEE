@@ -279,6 +279,10 @@ function bandProbability(band,probabilityIntervals){
   })
 }
 
+function prikaziKvalitetu(date,roi){
+  
+}
+
 
 function izracunKvalitete(data,vjerojatnosti,roi){
   var umnozakGood = null
