@@ -288,7 +288,7 @@ function bandProbability(band,probabilityIntervals){
   })
 }
 
-function prikaziKvalitetu(dateFromGiven,givenRoi){
+function prikaziKvalitetu(dateFromGiven,givenRoi,maskLand){
     var roi= rois[givenRoi]["geometry"]
     var dateFrom=ee.Date(dateFromGiven)
     var dateFinal = dateFrom.advance(3,'day');
@@ -313,8 +313,9 @@ function prikaziKvalitetu(dateFromGiven,givenRoi){
     var image = ee.Image(imageList.get(0));    
     print("image",  image)
 
-    image = maskWater(image)
-        
+    if(maskLand){
+       image = maskWater(image)
+    }
     var kvaliteta=izracunKvalitete(image,vjerojatnosti,roi)
     
     var invalid = calcValid(image,roi)
