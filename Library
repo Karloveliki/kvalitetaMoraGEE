@@ -282,7 +282,7 @@ function bandProbability(band,probabilityIntervals){
 function prikaziKvalitetu(dateFromGiven,givenRoi){
     var roi= rois[givenRoi]["geometry"]
     var dateFrom=ee.Date(dateFromGiven)
-    var dateFinal = date.advance(3, dateFrom);
+    var dateFinal = dateFrom.advance(3, dateFrom);
      dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                       .filterBounds(roi)
                       //.filterDate('2022-07-06', '2022-07-7');
