@@ -60,7 +60,23 @@ print(3, thirdImage)
 firstImage=secondImage
 // Select the 'quality_flags' band.
 var qualityFlags = firstImage.select('quality_flags');
+function maskWater(image) {
+  // Get the quality bits band (assuming it's named 'QA').
+  var qaBand = image.select('quality_flags');
 
+  // Create a mask for water pixels (bit 31 = 0).
+  var waterMask = qaBand.bitwiseAnd(1 << 31).eq(0);
+
+  // Apply the mask to the image.
+  return image.updateMask(waterMask);
+}
+
+// Apply the masking function to the image collection.
+var waterPixels = maskWater(firstImage);
+
+// Display the water pixels within your ROI.
+Map.centerObject(roi);
+Map.addLayer(waterPixels.clip(roi), {/* Visualization parameters */}, 'Water Pixels');
 // Create a mask to identify invalid pixels (bit 25 set).
 var invalidPixelMask = qualityFlags.bitwiseAnd(1 << 25).neq(0);
 
