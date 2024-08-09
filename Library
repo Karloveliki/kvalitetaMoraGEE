@@ -311,7 +311,7 @@ function prikaziKvalitetu(dateFromGiven,givenRoi){
     var image = dataset.first()
     image = maskWater(image)
     */
-    print(image)
+    print("image", image)
     print("broj slika je",image.size())
     
     var kvaliteta=izracunKvalitete(image,vjerojatnosti,roi)
