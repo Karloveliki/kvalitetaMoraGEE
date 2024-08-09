@@ -311,11 +311,13 @@ function prikaziKvalitetu(dateFromGiven,givenRoi){
     /*
     image = maskWater(image)
     */
-    var image = dataset.get(0)
-    print("image", image)
     
-    var kvaliteta=izracunKvalitete(image,vjerojatnosti,roi)
-    print("--------------")
+    var imageList = dataset.toList(dataset.size());
+    // Extract the first, second, and third images
+    var image = ee.Image(imageList.get(0));    
+    print("image",  image)
+        
+    viliteta=izracunKvalitete(image,vjerojatnosti,roi)
     
     var invalid = calcValid(image,roi)
     var validKvaliteta = invalid.multiply(2).add(kvaliteta)
