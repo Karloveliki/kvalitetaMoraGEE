@@ -283,7 +283,7 @@ function prikaziKvalitetu(dateFromGiven,givenRoi){
     var roi= rois[givenRoi]["geometry"]
     var dateFrom=ee.Date(dateFromGiven)
     var dateFinal = dateFrom.advance(3,'day');
-     dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
+    var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                       .filterBounds(roi)
                       //.filterDate('2022-07-06', '2022-07-7');
                      // .filterDate('2016-04-01', '2016-04-30');
