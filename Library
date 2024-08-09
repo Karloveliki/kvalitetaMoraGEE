@@ -281,7 +281,7 @@ function bandProbability(band,probabilityIntervals){
 
 function prikaziKvalitetu(dateFromGiven,givenRoi){
     var roi= rois[givenRoi]["geometry"]
-    var dateFrom=ee.date(dateFromGiven)
+    var dateFrom=ee.Date(dateFromGiven)
     var dateFinal = date.advance(3, dateFrom);
      dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                       .filterBounds(roi)
