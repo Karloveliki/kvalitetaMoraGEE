@@ -307,15 +307,13 @@ function prikaziKvalitetu(dateFromGiven,givenRoi){
       print("nije nasao sliku")
     }
     print("broj slika je",dataset.size())
-    
-    /*
-    image = maskWater(image)
-    */
-    
+
     var imageList = dataset.toList(dataset.size());
     // Extract the first, second, and third images
     var image = ee.Image(imageList.get(0));    
     print("image",  image)
+
+    image = maskWater(image)
         
     var kvaliteta=izracunKvalitete(image,vjerojatnosti,roi)
     
