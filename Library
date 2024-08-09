@@ -307,11 +307,11 @@ function prikaziKvalitetu(dateFromGiven,givenRoi){
     if(dataset.size()<1){
       print("nije nasao sliku")
     }
-    print("broj slika je",dataset.size())
     
     var image = dataset.first()
     image = maskWater(image)
     */
+    print("broj slika je",image.size())
     
     var kvaliteta=izracunKvalitete(image,vjerojatnosti,roi)
     print("--------------")
