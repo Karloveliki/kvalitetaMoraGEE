@@ -1,0 +1,3 @@
+var library = require('users/perkovickarlo5/proba:Library').myModule;
+
+library.
