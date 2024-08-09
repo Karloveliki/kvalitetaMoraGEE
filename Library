@@ -395,7 +395,8 @@ function krajeviBandova(vjerojatnosti){
     izracunKvalitete: izracunKvalitete,
     calcValid: calcValid,
     placeMarkers: placeMarkers,
-    krajeviBandova: krajeviBandova
+    krajeviBandova: krajeviBandova,
+    prikaziKvalitetu:  prikaziKvalitetu
   };
 })();
 
