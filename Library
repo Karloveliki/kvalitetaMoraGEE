@@ -293,7 +293,7 @@ function prikaziKvalitetu(dateFromGiven,givenRoi){
     var dateFrom=ee.Date(dateFromGiven)
     var dateFinal = dateFrom.advance(3,'day');
     
-    var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
+    var image = ee.ImageCollection('COPERNICUS/S3/OLCI')
                       .filterBounds(roi)
                       //.filterDate('2022-07-06', '2022-07-7');
                      // .filterDate('2016-04-01', '2016-04-30');
@@ -301,14 +301,17 @@ function prikaziKvalitetu(dateFromGiven,givenRoi){
                     // .filterDate('2020-08-06', '2020-08-10');
                    // .filterDate('2017-02-04', '2017-02-28');
                     .filterDate(dateFrom, dateFinal )
+                    .first()
                     
+    /*
     if(dataset.size()<1){
       print("nije nasao sliku")
     }
     print("broj slika je",dataset.size())
     
     var image = dataset.first()
-    //image = maskWater(image)
+    image = maskWater(image)
+    */
     
     var kvaliteta=izracunKvalitete(image,vjerojatnosti,roi)
     print("--------------")
