@@ -266,7 +266,16 @@ function placeMarkers(plaze) {
   // Add the point to the map
    Map.addLayer(pointCollection, {color: 'green'}, 'Plaze');
 }
+function maskWater(image) {
+  // Get the quality bits band (assuming it's named 'QA').
+  var qaBand = image.select('quality_flags');
 
+  // Create a mask for water pixels (bit 31 = 0).
+  var waterMask = qaBand.bitwiseAnd(1 << 31).eq(0);
+
+  // Apply the mask to the image.
+  return image.updateMask(waterMask);
+}
 function bandProbability(band,probabilityIntervals){
   var thresholds = probabilityIntervals["thresholds"]
   var classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
