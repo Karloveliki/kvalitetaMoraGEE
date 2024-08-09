@@ -24,6 +24,7 @@ print("--------------")
 var invalid = library.calcValid(dataset,roi)
 var validKvaliteta = invalid.multiply(2).add(kvaliteta)
 
+
 Map.centerObject(roi, 12);
 //Map.addLayer(kvaliteta, {min: 0, max: 1, palette: ['black', 'white']}, 'Kvaliteta mora', true, 0.5);
 var kvalitetaLayer=ui.Map.Layer(kvaliteta, {min: 0, max: 1, palette: ['red', 'blue']}, 'Kvaliteta', true, 0.5)
