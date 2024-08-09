@@ -292,6 +292,7 @@ function prikaziKvalitetu(dateFromGiven,givenRoi){
     var roi= rois[givenRoi]["geometry"]
     var dateFrom=ee.Date(dateFromGiven)
     var dateFinal = dateFrom.advance(3,'day');
+    
     var dataset = ee.ImageCollection('COPERNICUS/S3/OLCI')
                       .filterBounds(roi)
                       //.filterDate('2022-07-06', '2022-07-7');
@@ -307,7 +308,7 @@ function prikaziKvalitetu(dateFromGiven,givenRoi){
     print("broj slika je",dataset.size())
     
     var image = dataset.first()
-    image = maskWater(image)
+    //image = maskWater(image)
     
     var kvaliteta=izracunKvalitete(image,vjerojatnosti,roi)
     print("--------------")
