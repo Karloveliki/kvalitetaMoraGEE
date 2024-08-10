@@ -1,3 +1,3 @@
 var library = require('users/perkovickarlo5/proba:Library').myModule;
 
-library.prikaziKvalitetu("2020-07-02","ciovo",false)
+library.prikaziKvalitetu("2020-07-02","ciovo",true)
