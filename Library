@@ -272,6 +272,7 @@ function maskWater(image) {
 
   // Create a mask for water pixels (bit 31 = 0).
   var waterMask = qaBand.bitwiseAnd(1 << 31).eq(0);
+  var shoreMask = qaBand.bitwiseAnd(1 << 30).eq(1);
 
   // Apply the mask to the image.
   return image.updateMask(waterMask);
