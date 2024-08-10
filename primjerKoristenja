@@ -20,8 +20,8 @@ var library = require('users/perkovickarlo5/proba:Library').myModule;
 // - Invalid: tocke koje imaju vrijednosti van raspona
 // - KvalitetaMora(valid) - kombinirana kvaliteta + invalid
 //
-// layeri se mogu ukljucivati i iskljucivati, po defaultu se prikazuje
-// KvalitetaMora(valid)
+// layeri se mogu ukljucivati i iskljucivati u "Layers" izborniku na karti
+// po defaultu se prikazuje samo KvalitetaMora(valid)
 
 // primjer datuma na kojem i nedostaju neke tocke i neke tocke
 // imaju vrijednosti van okvira
