@@ -2,7 +2,7 @@
 var library = require('users/perkovickarlo5/proba:Library').myModule;
 
 // prikazi kvalitetu mora na datum 2020-07-02 za ROI "ciovo". Maskiraj obalu
-//library.prikaziKvalitetu("2020-07-02","ciovo", true)
+library.prikaziKvalitetu("2020-07-02","ciovo", true)
 
 // prikazi kvalitetu mora na datum 2020-07-02 za ROI "ciovo". NE maskiraj obalu
 //library.prikaziKvalitetu("2020-07-02","ciovo", false)
