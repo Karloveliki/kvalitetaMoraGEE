@@ -4,6 +4,7 @@ var library = require('users/perkovickarlo5/proba:Library').myModule;
 // prikazi kvalitetu mora na datum 2020-07-02 za ROI "ciovo". Maskiraj obalu
 //library.prikaziKvalitetu("2020-07-02","ciovo", true)
 
+// detekcija kopna i obale ne radi savrseno.
 // prikazi kvalitetu mora na datum 2020-07-02 za ROI "ciovo". NE maskiraj obalu
 //library.prikaziKvalitetu("2020-07-02","ciovo", false)
 
@@ -13,9 +14,18 @@ var library = require('users/perkovickarlo5/proba:Library').myModule;
 // bez boje - nema podataka
 // zeleni kruzic - plaze 
 
+// slika se sastoji od 4 layera:
+// - Plaze: oznake lokacija plaza
+// - Kvaliteta mora: vrijednost izracunata algoritmom
+// - Invalid: tocke koje imaju vrijednosti van raspona
+// - KvalitetaMora(valid) - kombinirana kvaliteta + invalid
+//
+// layeri se mogu ukljucivati i iskljucivati, po defaultu se prikazuje
+// KvalitetaMora(valid)
+
 // primjer datuma na kojem i nedostaju neke tocke i neke tocke
 // imaju vrijednosti van okvira
-library.prikaziKvalitetu("2020-06-06","ciovo", false)
+library.prikaziKvalitetu("2020-06-06","ciovo", true)
 
 // ispisi listu imane ROI-a koji se mogu koristiti
 //print(library.getRoiNames())
