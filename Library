@@ -422,7 +422,7 @@ function krajeviBandova(vjerojatnosti){
     calcValid: calcValid,
     placeMarkers: placeMarkers,
     krajeviBandova: krajeviBandova,
-    prikaziKvalitetu:  prikaziKvalitetu
+    prikaziKvalitetu:  prikaziKvalitetu,
     getRoiNames: getRoiNames
   };
 })();
