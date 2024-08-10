@@ -275,7 +275,8 @@ function maskWater(image) {
   var shoreMask = qaBand.bitwiseAnd(1 << 30).eq(1);
 
   // Apply the mask to the image.
-  return image.updateMask(waterMask.or(shoreMask));
+  return image.updateMask(waterMask);
+  //return image.updateMask(waterMask.or(shoreMask));
 }
 function bandProbability(band,probabilityIntervals){
   var thresholds = probabilityIntervals["thresholds"]
