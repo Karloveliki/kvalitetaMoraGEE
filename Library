@@ -232,7 +232,11 @@ var myModule = (function() {
      }
 
 //////////////////////////////////////////////
-
+function getRoiNames(){
+  var list=[]
+  list = Object.keys(rois)
+  print("lista je:",list)
+}
 function createBandNames(n) {
   if (n>9) {
     return 'B' + String(n)
