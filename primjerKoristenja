@@ -6,6 +6,7 @@ library.prikaziKvalitetu("2020-07-02","ciovo", true)
 
 // detekcija kopna i obale ne radi savrseno.
 // prikazi kvalitetu mora na datum 2020-07-02 za ROI "ciovo". NE maskiraj obalu
+//
 //library.prikaziKvalitetu("2020-07-02","ciovo", false)
 
 // plavo - voda dobra
@@ -25,6 +26,7 @@ library.prikaziKvalitetu("2020-07-02","ciovo", true)
 
 // primjer datuma na kojem i nedostaju neke tocke i neke tocke
 // imaju vrijednosti van okvira
+//
 //library.prikaziKvalitetu("2020-06-06","ciovo", true)
 
 // ispisi listu imane ROI-a koji se mogu koristiti
