@@ -11,6 +11,7 @@ library.prikaziKvalitetu("2020-07-02","ciovo", true)
 // crveno - voda loša
 // zuto - podavi sa satelita su izvan predvidjenih vrijednosti
 // bez boje - nema podataka
+// zeleni kruzic - plaze 
 
 // primjer datuma na kojem i nedostaju neke tocke i neke tocke
 // imaju vrijednosti van okvira
@@ -18,5 +19,3 @@ library.prikaziKvalitetu("2020-07-02","ciovo", true)
 
 // ispisi listu imane ROI-a koji se mogu koristiti
 print(library.getRoiNames())
-
-//
