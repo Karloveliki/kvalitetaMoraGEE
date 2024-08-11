@@ -1,4 +1,5 @@
 // require library for bathing water quality calculation
+// source: https://code.earthengine.google.com/ff48136afd4f4987f8144c5f8a579005
 var library = require('users/perkovickarlo5/proba:Library').myModule;
 
 // prikazi kvalitetu mora na datum 2020-07-02 za ROI "ciovo". Maskiraj obalu
