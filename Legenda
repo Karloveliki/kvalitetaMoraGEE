@@ -1,6 +1,6 @@
 // Define the color palette and corresponding labels
 var colors = ['red', 'blue', 'yellow'];
-var labels = ['voda lose kvalitete', "voda dobre kvalitete",  " krivi podaci" ];
+var labels = ['voda lose kvalitete', "voda dobre kvalitete",  "krivi podaci" ];
 
 // Create a panel to hold the legend
 var legend = ui.Panel({
