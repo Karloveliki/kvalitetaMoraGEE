@@ -1,4 +1,4 @@
- var uiLibrary=(function 
+ var uiLibrary=(function(){}
   function makeLegend(boje){
       // Define the color palette and corresponding labels
     var colors = ['red', 'blue', 'yellow'];
