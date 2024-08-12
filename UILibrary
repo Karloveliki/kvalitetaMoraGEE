@@ -1,0 +1,52 @@
+function makeLegend(){
+  // Define the color palette and corresponding labels
+var colors = ['red', 'blue', 'yellow'];
+var labels = ['voda lose kvalitete', "voda dobre kvalitete",  "krivi podaci" ];
+
+// Create a panel to hold the legend
+var legend = ui.Panel({
+  style: {
+    position: 'bottom-left',
+    padding: '8px 15px'
+  }
+});
+
+// Add a title to the legend
+var legendTitle = ui.Label({
+  value: 'Legenda',
+  style: {
+    fontWeight: 'bold',
+    fontSize: '18px',
+    margin: '0 0 4px 0',
+    padding: '0'
+  }
+});
+legend.add(legendTitle);
+
+// Create and add the legend items (color boxes and labels)
+for (var i = 0; i < colors.length; i++) {
+  var colorBox = ui.Label({
+    style: {
+      backgroundColor: colors[i],
+      padding: '8px',
+      margin: '0 0 4px 0'
+    }
+  });
+
+  var description = ui.Label({
+    value: labels[i],
+    style: {margin: '0 0 4px 6px'}
+  });
+
+  var legendItem = ui.Panel({
+    widgets: [colorBox, description],
+    layout: ui.Panel.Layout.Flow('horizontal')
+  });
+
+  legend.add(legendItem);
+}
+
+// Add the legend to the map
+Map.add(legend);
+
+}
