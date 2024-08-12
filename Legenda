@@ -12,7 +12,7 @@ var legend = ui.Panel({
 
 // Add a title to the legend
 var legendTitle = ui.Label({
-  value: 'Legend',
+  value: 'Legenda',
   style: {
     fontWeight: 'bold',
     fontSize: '18px',
