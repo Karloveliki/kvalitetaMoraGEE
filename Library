@@ -296,6 +296,10 @@ function bandProbability(band,probabilityIntervals){
 }
 
 function prikaziKvalitetu(dateFromGiven,givenRoi,maskLand){
+    prikaziKvalitetuOsnovna(vjerojatnosti, dateFromGiven,givenRoi,maskLand)
+}
+
+function prikaziKvalitetuOsnovna(vjerojatnosti, dateFromGiven,givenRoi,maskLand){
     var roi= rois[givenRoi]["geometry"]
     var dateFrom=ee.Date(dateFromGiven)
     var dateFinal = dateFrom.advance(3,'day');
