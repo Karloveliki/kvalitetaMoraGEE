@@ -1,0 +1,3 @@
+var uiLibrary = require('users/perkovickarlo5/proba:UILibrary').uiLibrary;
+
+uiLibrary.makeLegend()
