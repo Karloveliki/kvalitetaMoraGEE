@@ -51,5 +51,7 @@
     Map.add(legend);
   
   }
-}
-)
+  return {
+    makeLegend: makeLegend
+  }
+})
