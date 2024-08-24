@@ -4,7 +4,7 @@ var library = require('users/perkovickarlo5/proba:Library').myModule;
 
 // prikazi kvalitetu mora na datum 2020-07-02 za ROI "ciovo". Maskiraj obalu
 //library.prikaziKvalitetu("2020-07-02","ciovo", true)
-library.prikaziKvalitetu("2022-07-","ciovo", false)
+library.prikaziKvalitetu("2021-07-02","kornati_otvoreno_more", false)
 // detekcija kopna i obale ne radi savrseno.
 // prikazi kvalitetu mora na datum 2020-07-02 za ROI "ciovo". NE maskiraj obalu
 //
