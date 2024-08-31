@@ -2,7 +2,7 @@
 
 
 // Create a geometry representing the desired ROI
-var roi = ee.Geometry.Rectangle(-122.075, 37.779, -121.975, 37.879); // Replace with your coordinates
+var roi = ee.Geometry.Rectangle(""); // Replace with your coordinates
 
 // Create a layer to visualize the ROI
 var roiLayer = ee.Image().paint(roi, 0, 1); // Set opacity to 0 for transparency
