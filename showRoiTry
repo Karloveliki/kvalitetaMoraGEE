@@ -19,6 +19,7 @@ var roiStyle = {
   fillColor: blueColor,
   width: 2, // Namjestiti liniju širine koliko je potrebno 
 };
-
+// Centriraj ROI na karti
+Map.centerObject(roi, 12);
 // Dodaj ROI na mapu sa specificiranim stilom
 Map.addLayer(roi, roiStyle, 'Transparent Blue ROI');
