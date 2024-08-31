@@ -1,8 +1,20 @@
-// Create a geometry representing the desired ROI
-var roi = ee.Geometry.Rectangle(-122.075, 37.779, -121.975, 37.879); // Replace with your coordinates
+// Define the ROI geometry (replace with your actual geometry)
+var roi = ee.Geometry.Polygon(
+  [[[-122.45, 37.75],
+    [-122.40, 37.75],
+    [-122.40, 37.80],
+    [-122.45, 37.80],
+    [-122.45, 37.75]]]);
 
-// Create a layer to visualize the ROI with a specific color (blue)
-var roiLayer = ee.Image().paint(roi,new ee.Color('blue'), 1);
+// Create a blue color with transparency
+var blueColor = '0000FF80'; // Hex code for blue with 50% transparency
 
-// Add the layer to the map
-Map.addLayer(roiLayer, {opacity: 1}, 'Blue ROI');
+// Style the ROI with the transparent blue color
+var roiStyle = {
+  color: blueColor,
+  fillColor: blueColor,
+  width: 2, // Adjust the line width as needed
+};
+
+// Add the ROI to the map with the specified style
+Map.addLayer(roi, roiStyle, 'Transparent Blue ROI');
