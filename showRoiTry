@@ -20,5 +20,5 @@ var roiStyle = {
   width: 2, // Namjestiti liniju širine koliko je potrebno 
 };
 
-// dodaj ROI na mapu sa specificiranim stilom
+// Dodaj ROI na mapu sa specificiranim stilom
 Map.addLayer(roi, roiStyle, 'Transparent Blue ROI');
