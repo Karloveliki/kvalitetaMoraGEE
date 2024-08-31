@@ -1,20 +1,11 @@
+// Import necessary libraries
+
 
 // Create a geometry representing the desired ROI
-var roi =  ee.Geometry.Polygon(
-                [[ 
-                    [16.246564530619207,43.47703654992279],
-                    [16.50062336850983,43.47703654992279],
-                    [16.50062336850983,43.56864765332039],
-                    [16.246564530619207,43.56864765332039],
-                    [16.246564530619207,43.47703654992279]
-                    
-                ]]    
-            ) // Replace with your coordinates
+var roi = ee.Geometry.Rectangle(-122.075, 37.779, -121.975, 37.879); // Replace with your coordinates
 
-// 
-// Create a layer to visualize the ROI
-var roiLayer = ee.Image().paint(roi, 0, 1); // Set opacity to 0 for transparency
+// Create a layer to visualize the ROI with a specific color and opacity
+var roiLayer = ee.Image().paint(roi, 1, 1).multiply(0.5); // Multiply by 0.5 for 50% transparency
 
 // Add the layer to the map
-//Map.addLayer(roiLayer, {opacity: 0.5}, 'Transparent ROI'); // Adjust opacity as needed
-var prikaz=ui.Map.Layer(kvaliteta, {min: 0, max: 1, palette: ['red', 'blue']}, 'Kvaliteta', true, 0.8)
+Map.addLayer(roiLayer, {opacity: 1}, 'Colored ROI');
