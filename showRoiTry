@@ -11,9 +11,10 @@ var roi =  ee.Geometry.Polygon(
                 ]]    
             ) // Replace with your coordinates
 
-
+// 
 // Create a layer to visualize the ROI
 var roiLayer = ee.Image().paint(roi, 0, 1); // Set opacity to 0 for transparency
 
 // Add the layer to the map
-Map.addLayer(roiLayer, {opacity: 0.5}, 'Transparent ROI'); // Adjust opacity as needed
+//Map.addLayer(roiLayer, {opacity: 0.5}, 'Transparent ROI'); // Adjust opacity as needed
+var prikaz=ui.Map.Layer(kvaliteta, {min: 0, max: 1, palette: ['red', 'blue']}, 'Kvaliteta', true, 0.8)
