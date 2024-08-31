@@ -11,7 +11,7 @@ var roi =  ee.Geometry.Polygon(
                 ]]    
             ) // Replace with your coordinates
 // Create a blue color with transparency
-var blueColor = '0000FF80'; // Hex code for blue with 50% transparency
+var blueColor = '0000FF33'; // Hex code for blue with 50% transparency
 
 // Style the ROI with the transparent blue color
 var roiStyle = {
