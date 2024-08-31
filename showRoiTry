@@ -1,11 +1,8 @@
-
-
-
 // Create a geometry representing the desired ROI
 var roi = ee.Geometry.Rectangle(-122.075, 37.779, -121.975, 37.879); // Replace with your coordinates
 
-// Create a layer to visualize the ROI with a specific color and opacity
-var roiLayer = ee.Image().paint(roi, 1, 1).multiply(0.5); // Multiply by 0.5 for 50% transparency
+// Create a layer to visualize the ROI with a specific color (blue)
+var roiLayer = ee.Image().paint(roi, ee.Color('blue'), 1);
 
 // Add the layer to the map
-Map.addLayer(roiLayer, {opacity: 1}, 'Colored ROI');
+Map.addLayer(roiLayer, {opacity: 1}, 'Blue ROI');
