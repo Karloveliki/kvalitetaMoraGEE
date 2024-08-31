@@ -10,15 +10,15 @@ var roi =  ee.Geometry.Polygon(
                     
                 ]]    
             ) // Zamijeniti sa vasim geo kordinatama
-// Stvoriti plavu 
+// Stvoriti plavu boju sa prozirnošću
 var blueColor = '0000FF33'; //Kod za pvalu boju sa 70% prozirnosti
 
-// Style the ROI with the transparent blue color
+// Stilirati ROI sa prozirnom plavom bojom
 var roiStyle = {
   color: blueColor,
   fillColor: blueColor,
-  width: 2, // Adjust the line width as needed
+  width: 2, // Namjestiti liniju širine koliko je potrebno 
 };
 
-// Add the ROI to the map with the specified style
+// dodaj ROI na mapu sa specificiranim stilom
 Map.addLayer(roi, roiStyle, 'Transparent Blue ROI');
