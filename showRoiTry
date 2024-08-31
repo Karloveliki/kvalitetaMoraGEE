@@ -1,5 +1,5 @@
 // Import necessary libraries
-var ee = require('ee');
+
 
 // Create a geometry representing the desired ROI
 var roi = ee.Geometry.Rectangle(-122.075, 37.779, -121.975, 37.879); // Replace with your coordinates
