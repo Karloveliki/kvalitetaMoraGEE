@@ -1,11 +1,15 @@
-// Define the ROI geometry (replace with your actual geometry)
-var roi = ee.Geometry.Polygon(
-  [[[-122.45, 37.75],
-    [-122.40, 37.75],
-    [-122.40, 37.80],
-    [-122.45, 37.80],
-    [-122.45, 37.75]]]);
 
+// Create a geometry representing the desired ROI
+var roi =  ee.Geometry.Polygon(
+                [[ 
+                    [16.246564530619207,43.47703654992279],
+                    [16.50062336850983,43.47703654992279],
+                    [16.50062336850983,43.56864765332039],
+                    [16.246564530619207,43.56864765332039],
+                    [16.246564530619207,43.47703654992279]
+                    
+                ]]    
+            ) // Replace with your coordinates
 // Create a blue color with transparency
 var blueColor = '0000FF80'; // Hex code for blue with 50% transparency
 
