@@ -1,5 +1,5 @@
 
-// Create a geometry representing the desired ROI
+// definiranje područja interesa (ROI= Region of Interest)
 var roi =  ee.Geometry.Polygon(
                 [[ 
                     [16.246564530619207,43.47703654992279],
@@ -9,9 +9,9 @@ var roi =  ee.Geometry.Polygon(
                     [16.246564530619207,43.47703654992279]
                     
                 ]]    
-            ) // Replace with your coordinates
-// Create a blue color with transparency
-var blueColor = '0000FF33'; // Hex code for blue with 50% transparency
+            ) // Zamijeniti sa vasim geo kordinatama
+// Stvoriti plavu 
+var blueColor = '0000FF33'; //Kod za pvalu boju sa 70% prozirnosti
 
 // Style the ROI with the transparent blue color
 var roiStyle = {
