@@ -416,20 +416,9 @@ function krajeviBandova(vjerojatnosti){
      print(thresholdBad[thresholdBad.length-1])
    })
 }
-  var privateVariable = 'Hello, Earth Engine!';
-
-  function privateFunction() {
-    return privateVariable;
-  }
-
-  function publicFunction() {
-    return privateFunction();
-  }
 
   // Expose public functions
   return {
-    publicFunction: publicFunction,
-    vjerojatnosti: vjerojatnosti,
     plaze: plaze,
     bands: bands,
     bandFactors: bandFactors,
