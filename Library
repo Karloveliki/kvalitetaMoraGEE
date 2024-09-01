@@ -314,7 +314,7 @@ function prikaziKvalitetu(dateFromGiven,givenRoi,maskLand){
     prikaziKvalitetuOsnovna(vjerojatnosti, dateFromGiven,givenRoi,maskLand)
 }
 
-function prikaziKvalitetuOsnovna(vjerojatnosti, dateFromGiven,givenRoi,maskLand){
+function prikaziKvalitetuOsnovna(uvjerljivosti, dateFromGiven,givenRoi,maskLand){
     var roi= rois[givenRoi]["geometry"]
     var dateFrom=ee.Date(dateFromGiven)
     var dateFinal = dateFrom.advance(3,'day');
@@ -336,7 +336,7 @@ function prikaziKvalitetuOsnovna(vjerojatnosti, dateFromGiven,givenRoi,maskLand)
        image = maskWater(image)
     }
 
-    var kvaliteta=izracunKvalitete(image,vjerojatnosti,roi)
+    var kvaliteta=izracunKvalitete(image,uvjerljivosti,roi)
 
     var invalid = calcValid(image,roi)
     var validKvaliteta = invalid.multiply(2).add(kvaliteta)
@@ -390,18 +390,16 @@ function calcValid(dataSet,roi) {
   return invalid
 } 
 
-
-
-function krajeviBandova(vjerojatnosti){
+function krajeviBandova(uvjerljivosti){
    bandNames.forEach(function(bandName) {
-    var bandGood = vjerojatnosti[bandName]["good"]
+    var bandGood = uvjerljivosti[bandName]["good"]
     var thresholdGood= bandGood["thresholds"]
-   // print ("threshold je:",threshold)
+    // print ("threshold je:",threshold)
     print(thresholdGood[thresholdGood.length-1])
   
-    var bandBad = vjerojatnosti[bandName]["bad"]
+    var bandBad = uvjerljivosti[bandName]["bad"]
     var thresholdBad=bandBad ["thresholds"]
-     print(thresholdBad[thresholdBad.length-1])
+    print(thresholdBad[thresholdBad.length-1])
    })
 }
 
