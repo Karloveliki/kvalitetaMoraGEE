@@ -297,9 +297,13 @@ var myModule = (function() {
 
   //////////////////////////////////////////////////////////////
 
+  // funkcija koja racuna cogency za svaki band, pomoću
+  // lookupa u teblice uvjerljivosti
   function bandCogency(band,cogencyIntervals){
     var thresholds = cogencyIntervals["thresholds"]
-    var classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
+    // izracunaj u kojem intervalu (redni broj) se vrijednost iz banda nalazi
+    var classified = band.gt(thresholds).reduce('sum').toInt(); 
+    // sada pomoću rednog broja intervala izvuci odgovoarajucu uvjerljivost
     var fromList = cogencyIntervals["from"] 
     var toList = cogencyIntervals["to"]
     return classified.remap({
@@ -358,15 +362,15 @@ var myModule = (function() {
 
 
   // izracunavanje procjene kvalitete
-  function izracunKvalitete(data,uvjerljivosti,roi){
+  function izracunKvalitete(img,uvjerljivosti,roi){
     var umnozakGood = null
     var umnozakBad = null
     bandNames.forEach(function(bandName) {
-      var band = data.select(bandName2GEE[bandName])
+      var band = img.select(bandName2GEE[bandName])
       var bandGood = uvjerljivosti[bandName]["good"]
-      var bandGoodUvjerljivosti=bandCogency(band,bandGood)
+      var bandGoodUvjerljivosti = bandCogency(band,bandGood)
       var bandBad = uvjerljivosti[bandName]["bad"]
-      var bandBadUvjerljivosti=bandCogency(band,bandBad)
+      var bandBadUvjerljivosti = bandCogency(band,bandBad)
       if (umnozakGood === null) {
         // ako smo u prvom bandu jednostavno njegovu uvjerljivost proglasimo za trenutni umnozak
         umnozakGood = bandGoodUvjerljivosti
@@ -382,13 +386,12 @@ var myModule = (function() {
   }
 
   // make Map that has 1 for valid pixels and 0 for invalid
+  // currently valid pixels are considered to be in interval [0, 189]
   function calcValid(dataSet,roi) {
     var allBands = dataSet.select(bands)
-    //print("allbands:",allBands)
     var preveliki = allBands.gt(189).reduce('sum').toInt().gt(0)
     var premali = allBands.lt(0).reduce('sum').toInt().gt(0)
     var invalid = preveliki.or(premali).clip(roi)
-    //print(losi)
     return invalid
   } 
 
