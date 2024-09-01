@@ -355,24 +355,22 @@ function prikaziKvalitetuOsnovna(vjerojatnosti, dateFromGiven,givenRoi,maskLand)
 }
 
 
+// izracunavanje procjene kvalitete
 function izracunKvalitete(data,vjerojatnosti,roi){
   var umnozakGood = null
   var umnozakBad = null
   bandNames.forEach(function(bandName) {
-    
-    
     var band = data.select(bandName2GEE[bandName])
-               
     var bandGood = vjerojatnosti[bandName]["good"]
     var bandGoodVjerojatnosti=bandProbability(band,bandGood)
-  
     var bandBad = vjerojatnosti[bandName]["bad"]
     var bandBadVjerojatnosti=bandProbability(band,bandBad)
-  
     if (umnozakGood === null) {
+      // ako smo u prvom bandu jednostavno njegovu uvjerljivost proglasimo za trenutni umnozak
       umnozakGood = bandGoodVjerojatnosti
       umnozakBad = bandBadVjerojatnosti
     } else {
+      // inace za sve ostale bandove , stari umnozak pomnozimo sa uvjerljivosti za band
       umnozakGood = umnozakGood.multiply(bandGoodVjerojatnosti)
       umnozakBad = umnozakBad.multiply(bandBadVjerojatnosti)
     }
