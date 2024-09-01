@@ -1,6 +1,6 @@
  var uiLibrary=(function(){
   function makeLegend(){
-      // Define the color palette and corresponding labels
+    // Define the color palette and corresponding labels
     var colors = ['red', 'blue', 'yellow'];
     var labels = ['voda lose kvalitete', "voda dobre kvalitete",  "krivi podaci" ];
     
