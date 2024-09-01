@@ -298,7 +298,7 @@ var myModule = (function() {
   //////////////////////////////////////////////////////////////
 
 function bandCogency(band,cogencyIntervals){
-  var thresholds = cogencyyIntervals["thresholds"]
+  var thresholds = cogencyIntervals["thresholds"]
   var classified = band.gt(thresholds).reduce('sum').toInt(); //Create the classified Image
   var fromList = cogencyIntervals["from"] 
   var toList = cogencyIntervals["to"]
